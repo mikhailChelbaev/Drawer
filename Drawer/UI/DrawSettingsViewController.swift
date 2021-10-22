@@ -16,7 +16,7 @@ class DrawSettingsViewController: UIViewController {
         .init(title: "Line", drawing: [.line(custom: true), .line(custom: false)]),
         .init(title: "Circle", drawing: [.circle(custom: true), .circle(custom: false)]),
         .init(title: "Ellipse", drawing: [.ellipse(custom: true), .ellipse(custom: false)]),
-        .init(title: "Color picker", drawing: [.colorPicker])
+        .init(title: "Other", drawing: [.fill, .colorPicker, .clear])
     ]
     
     private let tableView: UITableView = {
@@ -91,12 +91,17 @@ extension DrawSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let drawingType = data[indexPath.section].drawing[indexPath.item]
         switch drawingType {
-        case .circle, .line, .ellipse:
+        case .circle, .line, .ellipse, .fill:
             provider?.type = drawingType
         case .colorPicker:
             let controller = UIColorPickerViewController()
             controller.delegate = self
             present(controller, animated: true, completion: nil)
+        case .clear:
+            provider?.clear()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
     

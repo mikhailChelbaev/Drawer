@@ -5,16 +5,21 @@
 //  Created by Mikhail on 04.10.2021.
 //
 
-import Foundation
+import UIKit
 
 final class LineDrawer: ShapeDrawer {
     
-    func drawDefault(from p1: CGPoint, to p2: CGPoint, context: CGContext) {
+    func drawDefault(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board) {
         context.move(to: p1)
         context.addLine(to: p2)
+        drawLine(from: p1, to: p2, context: context, board: &board, onlyOnBoard: true)
     }
     
-    func drawCustom(from p1: CGPoint, to p2: CGPoint, context: CGContext) {
+    func drawCustom(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board) {
+        drawLine(from: p1, to: p2, context: context, board: &board, onlyOnBoard: false)
+    }
+    
+    private func drawLine(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board, onlyOnBoard: Bool) {
         let x1 = Int(p1.x)
         let y1 = Int(p1.y)
         let x2 = Int(p2.x)
@@ -47,7 +52,7 @@ final class LineDrawer: ShapeDrawer {
             } else {
                 ex += delta_exS
             }
-            drawPixel(point: .init(x: x1 + x, y: y1 + y), context: context)
+            drawPixel(point: .init(x: x1 + x, y: y1 + y), context: context, board: &board, onlyOnBoard: onlyOnBoard)
         }
     }
     

@@ -18,6 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = SplitViewController()
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
+        
+        windowScene.sizeRestrictions?.minimumSize = .init(width: 1200, height: 800)
+        windowScene.sizeRestrictions?.maximumSize = .init(width: 1200, height: 800)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

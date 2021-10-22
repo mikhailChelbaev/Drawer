@@ -12,6 +12,8 @@ enum DrawingType {
     case circle(custom: Bool)
     case ellipse(custom: Bool)
     case colorPicker
+    case clear
+    case fill
     
     var pretty: String {
         switch self {
@@ -23,6 +25,10 @@ enum DrawingType {
             return custom ? "Custom ellipse" : "Default ellipse"
         case .colorPicker:
             return "Select color"
+        case .clear:
+            return "Clear"
+        case .fill:
+            return "Fill"
         }
     }
     
@@ -36,6 +42,10 @@ enum DrawingType {
             return UIImage(systemName: "oval")
         case .colorPicker:
             return UIImage(systemName: "square.fill")
+        case .clear:
+            return UIImage(systemName: "trash.fill")
+        case .fill:
+            return UIImage(systemName: "paintbrush.fill")
         }
     }
 }

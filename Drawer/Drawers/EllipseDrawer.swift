@@ -9,7 +9,7 @@ import Foundation
 
 final class EllipseDrawer: ShapeDrawer {
     
-    func drawDefault(from p1: CGPoint, to p2: CGPoint, context: CGContext) {
+    func drawDefault(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board) {
         let x1 = p1.x
         let y1 = p1.y
         let x2 = p2.x
@@ -19,9 +19,14 @@ final class EllipseDrawer: ShapeDrawer {
         let b = abs(y2 - y1)
         
         context.addEllipse(in: .init(x: min(x1, x2), y: min(y1, y2), width: a, height: b))
+        drawEllipse(from: p1, to: p2, context: context, board: &board, onlyOnBoard: true)
     }
     
-    func drawCustom(from p1: CGPoint, to p2: CGPoint, context: CGContext) {
+    func drawCustom(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board) {
+        drawEllipse(from: p1, to: p2, context: context, board: &board, onlyOnBoard: false)
+    }
+    
+    private func drawEllipse(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board, onlyOnBoard: Bool) {
         var x1 = Int(p1.x)
         var y1 = Int(p1.y)
         var x2 = Int(p2.x)
@@ -50,10 +55,10 @@ final class EllipseDrawer: ShapeDrawer {
         b1 = 8 * b * b
         
         repeat {
-            drawPixel(x2, y1, context)
-            drawPixel(x1, y1, context)
-            drawPixel(x1, y2, context)
-            drawPixel(x2, y2, context)
+            drawPixel(x2, y1, context, board: &board, onlyOnBoard: onlyOnBoard)
+            drawPixel(x1, y1, context, board: &board, onlyOnBoard: onlyOnBoard)
+            drawPixel(x1, y2, context, board: &board, onlyOnBoard: onlyOnBoard)
+            drawPixel(x2, y2, context, board: &board, onlyOnBoard: onlyOnBoard)
             e2 = 2 * err
             if (e2 <= dy) {
                 y1 += 1
@@ -70,12 +75,12 @@ final class EllipseDrawer: ShapeDrawer {
         } while (x1 <= x2)
                  
         while (y1 - y2) < b {
-            drawPixel(x1 - 1, y1, context)
+            drawPixel(x1 - 1, y1, context, board: &board, onlyOnBoard: onlyOnBoard)
             y1 += 1
-            drawPixel(x2 + 1, y1, context)
-            drawPixel(x1 - 1, y2, context)
+            drawPixel(x2 + 1, y1, context, board: &board, onlyOnBoard: onlyOnBoard)
+            drawPixel(x1 - 1, y2, context, board: &board, onlyOnBoard: onlyOnBoard)
             y2 -= 1
-            drawPixel(x2 + 1, y2, context)
+            drawPixel(x2 + 1, y2, context, board: &board, onlyOnBoard: onlyOnBoard)
         }
     }
     

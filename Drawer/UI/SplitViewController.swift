@@ -24,6 +24,8 @@ final class SplitViewController: UISplitViewController {
         viewControllers = [settingsWrapper, drawing]
         
         settings.provider = drawing
+        
+        minimumPrimaryColumnWidth = 400
     }
     
     required init?(coder: NSCoder) {

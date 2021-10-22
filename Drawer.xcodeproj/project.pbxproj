@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7418039327235F670046F06C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418039227235F670046F06C /* Board.swift */; };
+		742152A72714DB2500802062 /* ShapeFiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742152A62714DB2500802062 /* ShapeFiller.swift */; };
+		742152A92714DB7600802062 /* PixelDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742152A82714DB7600802062 /* PixelDrawer.swift */; };
+		742152AB2714E51600802062 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742152AA2714E51600802062 /* Stack.swift */; };
 		742F0D22270A4E0D002B3F8D /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F0D21270A4E0D002B3F8D /* SplitViewController.swift */; };
 		742F0D24270A4E7B002B3F8D /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F0D23270A4E7B002B3F8D /* DrawingViewController.swift */; };
 		7474ED1A2709C7BE004E8B95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474ED192709C7BE004E8B95 /* AppDelegate.swift */; };
@@ -15,7 +19,6 @@
 		7474ED232709C7C0004E8B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7474ED222709C7C0004E8B95 /* Assets.xcassets */; };
 		7474ED262709C7C0004E8B95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7474ED242709C7C0004E8B95 /* LaunchScreen.storyboard */; };
 		7474ED302709C88E004E8B95 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474ED2F2709C88E004E8B95 /* UIView+Layout.swift */; };
-		7474ED342709C8DB004E8B95 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474ED332709C8DB004E8B95 /* DrawingView.swift */; };
 		74810009270B9C3F00BAB024 /* ShapeDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810008270B9C3F00BAB024 /* ShapeDrawer.swift */; };
 		7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481000A270B9C7700BAB024 /* LineDrawer.swift */; };
 		7481000D270B9DA100BAB024 /* CircleDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481000C270B9DA100BAB024 /* CircleDrawer.swift */; };
@@ -26,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7418039227235F670046F06C /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		742152A62714DB2500802062 /* ShapeFiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFiller.swift; sourceTree = "<group>"; };
+		742152A82714DB7600802062 /* PixelDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelDrawer.swift; sourceTree = "<group>"; };
+		742152AA2714E51600802062 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		742F0D21270A4E0D002B3F8D /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		742F0D23270A4E7B002B3F8D /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		7474ED162709C7BE004E8B95 /* Drawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +44,6 @@
 		7474ED272709C7C0004E8B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7474ED2D2709C7D7004E8B95 /* Drawer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Drawer.entitlements; sourceTree = "<group>"; };
 		7474ED2F2709C88E004E8B95 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
-		7474ED332709C8DB004E8B95 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		74810008270B9C3F00BAB024 /* ShapeDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDrawer.swift; sourceTree = "<group>"; };
 		7481000A270B9C7700BAB024 /* LineDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDrawer.swift; sourceTree = "<group>"; };
 		7481000C270B9DA100BAB024 /* CircleDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDrawer.swift; sourceTree = "<group>"; };
@@ -65,14 +71,6 @@
 				74810012270B9ECE00BAB024 /* DrawingType.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		742F0D25270A617D002B3F8D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7474ED332709C8DB004E8B95 /* DrawingView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		7474ED0D2709C7BE004E8B95 = {
@@ -111,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				7474ED2F2709C88E004E8B95 /* UIView+Layout.swift */,
+				742152AA2714E51600802062 /* Stack.swift */,
+				7418039227235F670046F06C /* Board.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -122,7 +122,6 @@
 				7474ED1D2709C7BE004E8B95 /* DrawSettingsViewController.swift */,
 				742F0D23270A4E7B002B3F8D /* DrawingViewController.swift */,
 				74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */,
-				742F0D25270A617D002B3F8D /* Views */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -139,10 +138,12 @@
 		74810007270B9C2900BAB024 /* Drawers */ = {
 			isa = PBXGroup;
 			children = (
+				742152A82714DB7600802062 /* PixelDrawer.swift */,
 				74810008270B9C3F00BAB024 /* ShapeDrawer.swift */,
 				7481000A270B9C7700BAB024 /* LineDrawer.swift */,
 				7481000C270B9DA100BAB024 /* CircleDrawer.swift */,
 				7481000E270B9DD900BAB024 /* EllipseDrawer.swift */,
+				742152A62714DB2500802062 /* ShapeFiller.swift */,
 			);
 			path = Drawers;
 			sourceTree = "<group>";
@@ -217,13 +218,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742152A72714DB2500802062 /* ShapeFiller.swift in Sources */,
 				7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */,
 				7481000F270B9DD900BAB024 /* EllipseDrawer.swift in Sources */,
+				742152AB2714E51600802062 /* Stack.swift in Sources */,
+				7418039327235F670046F06C /* Board.swift in Sources */,
+				742152A92714DB7600802062 /* PixelDrawer.swift in Sources */,
 				74810013270B9ECE00BAB024 /* DrawingType.swift in Sources */,
 				7474ED302709C88E004E8B95 /* UIView+Layout.swift in Sources */,
 				7474ED1E2709C7BE004E8B95 /* DrawSettingsViewController.swift in Sources */,
 				74810015270BAF9A00BAB024 /* AboutDeveloperView.swift in Sources */,
-				7474ED342709C8DB004E8B95 /* DrawingView.swift in Sources */,
 				74810009270B9C3F00BAB024 /* ShapeDrawer.swift in Sources */,
 				7481000D270B9DA100BAB024 /* CircleDrawer.swift in Sources */,
 				7474ED1A2709C7BE004E8B95 /* AppDelegate.swift in Sources */,
