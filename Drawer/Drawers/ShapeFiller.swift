@@ -61,23 +61,27 @@ final class LineShapeFiller: ShapeFiller {
             
             xLeft = x + 1 // save left x
             
-            
             guard xLeft < xRight else { continue } // check that xRight > xLeft
             
             // find not filled pixels above and below
             for newY in [y - 1, y + 1] {
-                var numberOfColorChanges: Int = 0
-                var previousColor: UIColor = board.getPixel(xLeft, newY)
-                var newColor: UIColor = .white
-                for newX in xLeft...(xRight + 2) { // xRight + 1
+                var flag: Bool = false // flag to find intervals
+                var previousColor: UIColor? // color of pixel with (newX - 1, newY) coordinates
+                var newColor: UIColor? // color of pixel with (newX, newY) coordinates
+                for newX in xLeft...xRight {
                     newColor = board.getPixel(newX, newY)
-                    if newColor != previousColor && currentColor == previousColor {
-                        numberOfColorChanges += 1
-                        if numberOfColorChanges % 2 == 1 {
-                            stack.push((newX - 1, newY))
+                    if newColor != previousColor {
+                        if currentColor == previousColor { // if we found right border
+                            flag = true // change flag
+                            stack.push((newX - 1, newY)) // push position to stack
+                        } else { // if we found left border
+                            flag = false // change flag
                         }
                     }
                     previousColor = newColor
+                }
+                if !flag { // if we found left border and did not find right border
+                    stack.push((xRight, newY)) // push position to stack
                 }
             }
             

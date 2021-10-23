@@ -13,7 +13,7 @@ class DrawSettingsViewController: UIViewController {
     weak var provider: DrawerProvider?
     
     private let data: [SectionDataSource] = [
-        .init(title: "Line", drawing: [.line(custom: true), .line(custom: false)]),
+        .init(title: "Line", drawing: [.line(custom: true), .line(custom: false), .polygon]),
         .init(title: "Circle", drawing: [.circle(custom: true), .circle(custom: false)]),
         .init(title: "Ellipse", drawing: [.ellipse(custom: true), .ellipse(custom: false)]),
         .init(title: "Other", drawing: [.fill, .colorPicker, .clear])
@@ -91,7 +91,7 @@ extension DrawSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let drawingType = data[indexPath.section].drawing[indexPath.item]
         switch drawingType {
-        case .circle, .line, .ellipse, .fill:
+        case .circle, .line, .ellipse, .fill, .polygon:
             provider?.type = drawingType
         case .colorPicker:
             let controller = UIColorPickerViewController()

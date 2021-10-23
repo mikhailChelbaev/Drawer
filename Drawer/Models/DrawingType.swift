@@ -14,6 +14,7 @@ enum DrawingType {
     case colorPicker
     case clear
     case fill
+    case polygon
     
     var pretty: String {
         switch self {
@@ -23,6 +24,8 @@ enum DrawingType {
             return custom ? "Custom circle" : "Default circle"
         case .ellipse(let custom):
             return custom ? "Custom ellipse" : "Default ellipse"
+        case .polygon:
+            return "Polygon"
         case .colorPicker:
             return "Select color"
         case .clear:
@@ -46,6 +49,8 @@ enum DrawingType {
             return UIImage(systemName: "trash.fill")
         case .fill:
             return UIImage(systemName: "paintbrush.fill")
+        case .polygon:
+            return UIImage(systemName: "triangle")
         }
     }
 }

@@ -30,11 +30,12 @@ struct Board {
     
     mutating func setPixel(_ x: Int, _ y: Int) {
         guard x > 0 && x < width && y > 0 && y < height else { return }
-        board[x][y] = drawingColor
+        board[y][x] = drawingColor
     }
     
-    func getPixel(_ x: Int, _ y: Int) -> UIColor {
-        return board[x][y]
+    func getPixel(_ x: Int, _ y: Int) -> UIColor? {
+        guard x > 0 && x < width && y > 0 && y < height else { return nil }
+        return board[y][x]
     }
     
 }
@@ -53,11 +54,11 @@ extension Board {
         setPixel(Int(point.x), Int(point.y))
     }
     
-    func getPixel(_ x: CGFloat, _ y: CGFloat) -> UIColor {
+    func getPixel(_ x: CGFloat, _ y: CGFloat) -> UIColor? {
         return getPixel(Int(x), Int(y))
     }
     
-    func getPixel(at point: CGPoint) -> UIColor {
+    func getPixel(at point: CGPoint) -> UIColor? {
         return getPixel(Int(point.x), Int(point.y))
     }
     

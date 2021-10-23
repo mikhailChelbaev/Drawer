@@ -43,11 +43,17 @@ final class DrawingViewController: UIViewController, DrawerProvider {
     
     private let shapeFiller: ShapeFiller = LineShapeFiller()
     
+    private let polygonDrawer: PolygonDrawer = .init()
+    
     // MARK: - DrawerProvider
     
     var type: DrawingType = .line(custom: true)
     
-    var color: UIColor = .blue
+    var color: UIColor = .blue {
+        didSet {
+            board.drawingColor = color
+        }
+    }
     
     // MARK: - properties
     
@@ -90,11 +96,16 @@ final class DrawingViewController: UIViewController, DrawerProvider {
         
         switch touch {
         case .first:
-            if case .fill = type {
+            switch type {
+            case .fill:
                 drawImage { context in
                     shapeFiller.fill(image: imageView.image, point: point, context: context, board: &board)
                 }
-            } else {
+            case .polygon:
+                drawImage { context in
+                    polygonDrawer.addPoint(point, context: context, board: &board)
+                }
+            default:
                 touch = .second(firstPoint: point)
             }
         case .second(let firstPoint):
