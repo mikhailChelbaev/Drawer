@@ -46,7 +46,7 @@ final class LineShapeFiller: ShapeFiller {
             
             // fill right interval
             while x < width, board.getPixel(x, y) == currentColor {
-                drawPixel(x, y, context, board: &board)
+                board.setPixel(x, y)
                 x += 1
             }
             
@@ -55,7 +55,7 @@ final class LineShapeFiller: ShapeFiller {
             
             // fill left interval
             while x > 0, board.getPixel(x, y) == currentColor {
-                drawPixel(x, y, context, board: &board)
+                board.setPixel(x, y)
                 x -= 1
             }
             

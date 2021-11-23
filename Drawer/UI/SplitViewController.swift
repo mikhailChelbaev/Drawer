@@ -11,7 +11,7 @@ final class SplitViewController: UISplitViewController {
     
     private let settings: DrawSettingsViewController = .init()
     
-    private let drawing: DrawingViewController = .init()
+    private let drawing: MainDrawingViewController = .init()
     
     init() {
         super.init(nibName: nil, bundle: nil)

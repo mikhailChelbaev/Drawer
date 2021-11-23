@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreGraphics
 
 final class LineDrawer: ShapeDrawer {
     
@@ -19,7 +20,10 @@ final class LineDrawer: ShapeDrawer {
         drawLine(from: p1, to: p2, context: context, board: &board, onlyOnBoard: false)
     }
     
-    private func drawLine(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board, onlyOnBoard: Bool) {
+    @discardableResult
+    func drawLine(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board, onlyOnBoard: Bool) -> [CGPoint] {
+        var points: [CGPoint] = []
+        
         let x1 = Int(p1.x)
         let y1 = Int(p1.y)
         let x2 = Int(p2.x)
@@ -39,6 +43,10 @@ final class LineDrawer: ShapeDrawer {
         let sx = x1 < x2 ? 1 : -1 // x sign
         let sy = y1 < y2 ? 1 : -1 // y sign
         
+        // draw first point
+        drawPixel(point: .init(x: x1, y: y1), context: context, board: &board, onlyOnBoard: onlyOnBoard)
+        points.append(.init(x: x1, y: y1))
+        
         while (abs(x) < a || abs(y) < b) {
             if ey > 0 {
                 y += sy
@@ -53,7 +61,10 @@ final class LineDrawer: ShapeDrawer {
                 ex += delta_exS
             }
             drawPixel(point: .init(x: x1 + x, y: y1 + y), context: context, board: &board, onlyOnBoard: onlyOnBoard)
+            points.append(.init(x: x1 + x, y: y1 + y))
         }
+        
+        return points
     }
     
 }

@@ -9,10 +9,10 @@ import Foundation
 
 final class PolygonDrawer {
     
-    var isDrawing: Bool = false {
+    private(set) var isDrawing: Bool = false {
         didSet {
             if !isDrawing {
-                points = []
+                polygon = .init()
             }
         }
     }
@@ -21,21 +21,43 @@ final class PolygonDrawer {
     
     private let intersectionChecker: IntersectionChecker = .init()
     
-    private var points: [CGPoint] = []
+    private var polygon: Polygon = .init()
     
-    func addPoint(_ point: CGPoint, context: CGContext, board: inout Board) {
+    func addPoint(
+        _ point: CGPoint,
+        context: CGContext,
+        board: inout Board,
+        completion: (Polygon) -> Void
+    ) {
         isDrawing = true
-        points.append(point)
-        if points.count > 1 {
-            let p1 = points[points.count - 2]
-            if points.count >= 4 {
-                if intersectionChecker.intersect(a: points[0], b: points[1], c: p1, d: point) {
-                    lineDrawer.drawDefault(from: points[0], to: p1, context: context, board: &board)
+        polygon.addVertex(point)
+        if polygon.numberOfVertices > 1 {
+            let p1 = polygon[polygon.numberOfVertices - 2]
+            if polygon.numberOfVertices >= 4 {
+                if intersectionChecker.intersect(a: polygon[0], b: polygon[1], c: p1, d: point) {
+                    polygon.addPoints(
+                        lineDrawer.drawLine(
+                            from: polygon[0],
+                            to: p1,
+                            context: context,
+                            board: &board,
+                            onlyOnBoard: false
+                        )
+                    )
+                    completion(polygon)
                     isDrawing = false
                     return
                 }
             }
-            lineDrawer.drawDefault(from: p1, to: point, context: context, board: &board)
+            polygon.addPoints(
+                lineDrawer.drawLine(
+                    from: p1,
+                    to: point,
+                    context: context,
+                    board: &board,
+                    onlyOnBoard: false
+                )
+            )
         }
     }
     

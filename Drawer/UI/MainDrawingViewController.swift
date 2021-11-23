@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - DrawerProvider
+
 protocol DrawerProvider: AnyObject {
     var type: DrawingType { set get }
     var color: UIColor { set get }
@@ -14,24 +16,9 @@ protocol DrawerProvider: AnyObject {
     func clear()
 }
 
-final class DrawingViewController: UIViewController, DrawerProvider {
-    
-    // MARK: - DrawingState
-    
-    enum Touches {
-        case first
-        case second(firstPoint: CGPoint)
-    }
-    
-    // MARK: - UI
-    
-    private let imageView = UIImageView()
-    
-    // MARK: - Settings
-    
-    var lastPoint = CGPoint.zero
-    
-    var brushWidth: CGFloat = 2.0
+// MARK: - MainDrawingViewController
+
+final class MainDrawingViewController: DrawingViewController, DrawerProvider {
     
     // MARK: - drawers
     
@@ -41,25 +28,19 @@ final class DrawingViewController: UIViewController, DrawerProvider {
     
     private let ellipseDrawer: ShapeDrawer = EllipseDrawer()
     
+    private let polygonDrawer: PolygonDrawer = .init()
+    
     private let shapeFiller: ShapeFiller = LineShapeFiller()
     
-    private let polygonDrawer: PolygonDrawer = .init()
+    private let polygonFiller: PolygonFiller = XORPolygonFiller()
     
     // MARK: - DrawerProvider
     
     var type: DrawingType = .line(custom: true)
     
-    var color: UIColor = .blue {
-        didSet {
-            board.drawingColor = color
-        }
-    }
-    
     // MARK: - properties
     
-    private var touch: Touches = .first
-    
-    private var board: Board!
+    private var polygons: [Polygon] = []
     
     // MARK: - set up
     
@@ -97,14 +78,25 @@ final class DrawingViewController: UIViewController, DrawerProvider {
         switch touch {
         case .first:
             switch type {
-            case .fill:
+            case .fillShape:
                 drawImage { context in
                     shapeFiller.fill(image: imageView.image, point: point, context: context, board: &board)
                 }
+                imageView.image = board.getImage()
             case .polygon:
                 drawImage { context in
-                    polygonDrawer.addPoint(point, context: context, board: &board)
+                    polygonDrawer.addPoint(point, context: context, board: &board) { [weak self] polygon in
+                        self?.polygons.append(polygon)
+                    }
                 }
+            case .fillPolygon:
+                let polygonsToFill = polygons.filter({ $0.contains(point) })
+                polygonsToFill.forEach({ polygon in
+                    drawImage { context in
+                        polygonFiller.fill(image: imageView.image, polygon: polygon, context: context, board: &board)
+                    }
+                })
+                imageView.image = board.getImage()
             default:
                 touch = .second(firstPoint: point)
             }
@@ -139,31 +131,9 @@ final class DrawingViewController: UIViewController, DrawerProvider {
         }
     }
     
-    // MARK: - helpers
-    
-    func drawImage(drawing: (CGContext) -> Void) {
-        UIGraphicsBeginImageContext(view.frame.size)
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        imageView.image?.draw(in: view.bounds)
-        
-        drawing(context)
-        
-        context.setLineCap(.round)
-        context.setBlendMode(.normal)
-        context.setLineWidth(brushWidth)
-        context.setStrokeColor(color.cgColor)
-        
-        context.strokePath()
-        
-        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-    }
-    
-    func clear() {
-        imageView.image = nil
-        board = .init(size: imageView.frame.size, color: color)
+    override func clear() {
+        super.clear()
+        polygons = []
     }
     
 }

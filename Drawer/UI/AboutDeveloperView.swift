@@ -20,8 +20,13 @@ struct AboutDeveloperView: View {
                     Spacer()
                 }.padding(.leading, 20).padding(.top, 20)
                 HStack {
-                    Text("Task:").bold()
+                    Text("Task 1:").bold()
                     Text("Bresenham's algorithm realization")
+                    Spacer()
+                }.padding(.leading, 20)
+                HStack {
+                    Text("Task 2:").bold()
+                    Text("Clipping and shape filling")
                     Spacer()
                 }.padding(.leading, 20)
                 HStack {
@@ -36,7 +41,7 @@ struct AboutDeveloperView: View {
                 }.padding(.leading, 20)
                 HStack(alignment: .top) {
                     Text("Program execution:").bold()
-                    Text("Open Bresenham_algo project and run it. Use buttons on the first page to select draw type, open draw window and watch an information about the developer. To draw a line click on the panel first time to set the beginning and second to set the end. To draw a circle or an ellipse click on the panel to set a center, then click again to set the radius.")
+                    Text("Select the tool from the left panel then draw on the right panel.")
                     Spacer()
                 }.padding(.leading, 20)
                 Spacer()

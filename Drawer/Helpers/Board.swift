@@ -28,14 +28,41 @@ struct Board {
         }
     }
     
-    mutating func setPixel(_ x: Int, _ y: Int) {
-        guard x > 0 && x < width && y > 0 && y < height else { return }
-        board[y][x] = drawingColor
+    mutating func setPixel(_ x: Int, _ y: Int, color: UIColor? = nil) {
+        guard x >= 0 && x < width && y >= 0 && y < height else { return }
+        board[y][x] = color ?? drawingColor
     }
     
     func getPixel(_ x: Int, _ y: Int) -> UIColor? {
-        guard x > 0 && x < width && y > 0 && y < height else { return nil }
+        guard x >= 0 && x < width && y >= 0 && y < height else { return nil }
         return board[y][x]
+    }
+    
+    func getImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: .init(width: width, height: height))
+        return renderer.image { context in
+            context.cgContext.setLineCap(.round)
+            context.cgContext.setBlendMode(.normal)
+            context.cgContext.setLineWidth(2)
+            
+            for y in 0 ..< height {
+                var previousColor: UIColor? = nil
+                var currentColor: UIColor? = nil
+                var index: Int = 0
+                for x in 0 ... width {
+                    currentColor = getPixel(x, y)
+                    if currentColor != previousColor, let previousColor = previousColor {
+                        context.cgContext.move(to: .init(x: index, y: y))
+                        context.cgContext.addLine(to: .init(x: x - 1, y: y))
+                        context.cgContext.setStrokeColor(previousColor.cgColor)
+                        context.cgContext.setLineWidth(1)
+                        context.cgContext.strokePath()
+                        index = x
+                    }
+                    previousColor = currentColor
+                }
+            }
+        }
     }
     
 }
@@ -46,12 +73,12 @@ extension Board {
         self.init(width: Int(size.width), height: Int(size.height), color: color)
     }
     
-    mutating func setPixel(_ x: CGFloat, _ y: CGFloat) {
-        setPixel(Int(x), Int(y))
+    mutating func setPixel(_ x: CGFloat, _ y: CGFloat, color: UIColor? = nil) {
+        setPixel(Int(x), Int(y), color: color)
     }
     
-    mutating func setPixel(point: CGPoint) {
-        setPixel(Int(point.x), Int(point.y))
+    mutating func setPixel(point: CGPoint, color: UIColor? = nil) {
+        setPixel(Int(point.x), Int(point.y), color: color)
     }
     
     func getPixel(_ x: CGFloat, _ y: CGFloat) -> UIColor? {

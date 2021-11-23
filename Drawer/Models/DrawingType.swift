@@ -13,8 +13,10 @@ enum DrawingType {
     case ellipse(custom: Bool)
     case colorPicker
     case clear
-    case fill
+    case fillShape
+    case fillPolygon
     case polygon
+    case clipping
     
     var pretty: String {
         switch self {
@@ -30,8 +32,12 @@ enum DrawingType {
             return "Select color"
         case .clear:
             return "Clear"
-        case .fill:
-            return "Fill"
+        case .fillShape:
+            return "Fill any shape"
+        case .fillPolygon:
+            return "Fill polygon"
+        case .clipping:
+            return "Clip"
         }
     }
     
@@ -47,10 +53,14 @@ enum DrawingType {
             return UIImage(systemName: "square.fill")
         case .clear:
             return UIImage(systemName: "trash.fill")
-        case .fill:
+        case .fillShape:
             return UIImage(systemName: "paintbrush.fill")
+        case .fillPolygon:
+            return UIImage(systemName: "pentagon.lefthalf.filled")
         case .polygon:
-            return UIImage(systemName: "triangle")
+            return UIImage(systemName: "pentagon")
+        case .clipping:
+            return UIImage(systemName: "square.dashed")
         }
     }
 }

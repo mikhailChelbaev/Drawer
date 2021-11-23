@@ -12,8 +12,11 @@
 		742152A92714DB7600802062 /* PixelDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742152A82714DB7600802062 /* PixelDrawer.swift */; };
 		742152AB2714E51600802062 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742152AA2714E51600802062 /* Stack.swift */; };
 		742F0D22270A4E0D002B3F8D /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F0D21270A4E0D002B3F8D /* SplitViewController.swift */; };
-		742F0D24270A4E7B002B3F8D /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F0D23270A4E7B002B3F8D /* DrawingViewController.swift */; };
+		742F0D24270A4E7B002B3F8D /* MainDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F0D23270A4E7B002B3F8D /* MainDrawingViewController.swift */; };
 		74302BCA2724287B004F24F0 /* PolygonDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74302BC92724287B004F24F0 /* PolygonDrawer.swift */; };
+		7441C7EE27430DC9004CD180 /* ClippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7441C7ED27430DC9004CD180 /* ClippingViewController.swift */; };
+		7458D064272710EA0055011C /* PolygonFiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7458D063272710EA0055011C /* PolygonFiller.swift */; };
+		7464762827253EC70079BAE2 /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7464762727253EC70079BAE2 /* Polygon.swift */; };
 		7474ED1A2709C7BE004E8B95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474ED192709C7BE004E8B95 /* AppDelegate.swift */; };
 		7474ED1C2709C7BE004E8B95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474ED1B2709C7BE004E8B95 /* SceneDelegate.swift */; };
 		7474ED1E2709C7BE004E8B95 /* DrawSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474ED1D2709C7BE004E8B95 /* DrawSettingsViewController.swift */; };
@@ -27,6 +30,10 @@
 		74810011270B9EB700BAB024 /* SectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810010270B9EB700BAB024 /* SectionDataSource.swift */; };
 		74810013270B9ECE00BAB024 /* DrawingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810012270B9ECE00BAB024 /* DrawingType.swift */; };
 		74810015270BAF9A00BAB024 /* AboutDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */; };
+		74CD02B1273B1A67007F0CFA /* UIColor+IsEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */; };
+		74D54B342743C04A008D5DC2 /* BaseDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D54B332743C04A008D5DC2 /* BaseDrawingViewController.swift */; };
+		74F886E12743D1E600C6CF55 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F886E02743D1E600C6CF55 /* Line.swift */; };
+		74F886E32743D27A00C6CF55 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F886E22743D27A00C6CF55 /* Rectangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +42,11 @@
 		742152A82714DB7600802062 /* PixelDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelDrawer.swift; sourceTree = "<group>"; };
 		742152AA2714E51600802062 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		742F0D21270A4E0D002B3F8D /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		742F0D23270A4E7B002B3F8D /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
+		742F0D23270A4E7B002B3F8D /* MainDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDrawingViewController.swift; sourceTree = "<group>"; };
 		74302BC92724287B004F24F0 /* PolygonDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonDrawer.swift; sourceTree = "<group>"; };
+		7441C7ED27430DC9004CD180 /* ClippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClippingViewController.swift; sourceTree = "<group>"; };
+		7458D063272710EA0055011C /* PolygonFiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonFiller.swift; sourceTree = "<group>"; };
+		7464762727253EC70079BAE2 /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		7474ED162709C7BE004E8B95 /* Drawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7474ED192709C7BE004E8B95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7474ED1B2709C7BE004E8B95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +63,10 @@
 		74810010270B9EB700BAB024 /* SectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDataSource.swift; sourceTree = "<group>"; };
 		74810012270B9ECE00BAB024 /* DrawingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingType.swift; sourceTree = "<group>"; };
 		74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDeveloperView.swift; sourceTree = "<group>"; };
+		74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+IsEqual.swift"; sourceTree = "<group>"; };
+		74D54B332743C04A008D5DC2 /* BaseDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDrawingViewController.swift; sourceTree = "<group>"; };
+		74F886E02743D1E600C6CF55 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		74F886E22743D27A00C6CF55 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +85,20 @@
 			children = (
 				74810010270B9EB700BAB024 /* SectionDataSource.swift */,
 				74810012270B9ECE00BAB024 /* DrawingType.swift */,
+				7464762727253EC70079BAE2 /* Polygon.swift */,
+				74F886E02743D1E600C6CF55 /* Line.swift */,
+				74F886E22743D27A00C6CF55 /* Rectangle.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7458D062272710DA0055011C /* Fillers */ = {
+			isa = PBXGroup;
+			children = (
+				742152A62714DB2500802062 /* ShapeFiller.swift */,
+				7458D063272710EA0055011C /* PolygonFiller.swift */,
+			);
+			path = Fillers;
 			sourceTree = "<group>";
 		};
 		7474ED0D2709C7BE004E8B95 = {
@@ -97,6 +123,7 @@
 				7474ED322709C8C1004E8B95 /* Core */,
 				7474ED312709C8B5004E8B95 /* UI */,
 				74810007270B9C2900BAB024 /* Drawers */,
+				7458D062272710DA0055011C /* Fillers */,
 				742F0D1E270A4878002B3F8D /* Models */,
 				7474ED2E2709C864004E8B95 /* Helpers */,
 				7474ED2D2709C7D7004E8B95 /* Drawer.entitlements */,
@@ -113,6 +140,7 @@
 				7474ED2F2709C88E004E8B95 /* UIView+Layout.swift */,
 				742152AA2714E51600802062 /* Stack.swift */,
 				7418039227235F670046F06C /* Board.swift */,
+				74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -120,10 +148,12 @@
 		7474ED312709C8B5004E8B95 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				74D54B322743C034008D5DC2 /* Common */,
 				742F0D21270A4E0D002B3F8D /* SplitViewController.swift */,
 				7474ED1D2709C7BE004E8B95 /* DrawSettingsViewController.swift */,
-				742F0D23270A4E7B002B3F8D /* DrawingViewController.swift */,
+				742F0D23270A4E7B002B3F8D /* MainDrawingViewController.swift */,
 				74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */,
+				7441C7ED27430DC9004CD180 /* ClippingViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -145,10 +175,17 @@
 				7481000A270B9C7700BAB024 /* LineDrawer.swift */,
 				7481000C270B9DA100BAB024 /* CircleDrawer.swift */,
 				7481000E270B9DD900BAB024 /* EllipseDrawer.swift */,
-				742152A62714DB2500802062 /* ShapeFiller.swift */,
 				74302BC92724287B004F24F0 /* PolygonDrawer.swift */,
 			);
 			path = Drawers;
+			sourceTree = "<group>";
+		};
+		74D54B322743C034008D5DC2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				74D54B332743C04A008D5DC2 /* BaseDrawingViewController.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,23 +258,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7441C7EE27430DC9004CD180 /* ClippingViewController.swift in Sources */,
 				742152A72714DB2500802062 /* ShapeFiller.swift in Sources */,
+				74D54B342743C04A008D5DC2 /* BaseDrawingViewController.swift in Sources */,
 				7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */,
 				7481000F270B9DD900BAB024 /* EllipseDrawer.swift in Sources */,
 				742152AB2714E51600802062 /* Stack.swift in Sources */,
+				7458D064272710EA0055011C /* PolygonFiller.swift in Sources */,
 				7418039327235F670046F06C /* Board.swift in Sources */,
 				742152A92714DB7600802062 /* PixelDrawer.swift in Sources */,
+				7464762827253EC70079BAE2 /* Polygon.swift in Sources */,
 				74810013270B9ECE00BAB024 /* DrawingType.swift in Sources */,
 				7474ED302709C88E004E8B95 /* UIView+Layout.swift in Sources */,
 				7474ED1E2709C7BE004E8B95 /* DrawSettingsViewController.swift in Sources */,
 				74810015270BAF9A00BAB024 /* AboutDeveloperView.swift in Sources */,
 				74810009270B9C3F00BAB024 /* ShapeDrawer.swift in Sources */,
+				74F886E32743D27A00C6CF55 /* Rectangle.swift in Sources */,
 				7481000D270B9DA100BAB024 /* CircleDrawer.swift in Sources */,
+				74CD02B1273B1A67007F0CFA /* UIColor+IsEqual.swift in Sources */,
 				7474ED1A2709C7BE004E8B95 /* AppDelegate.swift in Sources */,
 				742F0D22270A4E0D002B3F8D /* SplitViewController.swift in Sources */,
 				7474ED1C2709C7BE004E8B95 /* SceneDelegate.swift in Sources */,
 				74810011270B9EB700BAB024 /* SectionDataSource.swift in Sources */,
-				742F0D24270A4E7B002B3F8D /* DrawingViewController.swift in Sources */,
+				74F886E12743D1E600C6CF55 /* Line.swift in Sources */,
+				742F0D24270A4E7B002B3F8D /* MainDrawingViewController.swift in Sources */,
 				74302BCA2724287B004F24F0 /* PolygonDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +441,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -426,7 +470,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

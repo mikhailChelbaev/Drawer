@@ -5,7 +5,7 @@
 //  Created by Mikhail on 11.10.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol PixelDrawer { }
 
@@ -16,22 +16,24 @@ extension PixelDrawer {
         _ y: Int,
         _ contex: CGContext,
         board: inout Board,
-        onlyOnBoard: Bool = false
+        onlyOnBoard: Bool = false,
+        color: UIColor? = nil
     ) {
-        drawPixel(point: .init(x: x, y: y), context: contex, board: &board, onlyOnBoard: onlyOnBoard)
+        drawPixel(point: .init(x: x, y: y), context: contex, board: &board, onlyOnBoard: onlyOnBoard, color: color)
     }
     
     func drawPixel(
         point: CGPoint,
         context: CGContext,
         board: inout Board,
-        onlyOnBoard: Bool = false
+        onlyOnBoard: Bool = false,
+        color: UIColor? = nil
     ) {
         if !onlyOnBoard {
             context.move(to: point)
             context.addLine(to: point)
         }
-        board.setPixel(point: point)
+        board.setPixel(point: point, color: color)
     }
     
 }

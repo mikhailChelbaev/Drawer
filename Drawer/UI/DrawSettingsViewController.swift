@@ -16,7 +16,8 @@ class DrawSettingsViewController: UIViewController {
         .init(title: "Line", drawing: [.line(custom: true), .line(custom: false), .polygon]),
         .init(title: "Circle", drawing: [.circle(custom: true), .circle(custom: false)]),
         .init(title: "Ellipse", drawing: [.ellipse(custom: true), .ellipse(custom: false)]),
-        .init(title: "Other", drawing: [.fill, .colorPicker, .clear])
+        .init(title: "Fill", drawing: [.fillShape]),
+        .init(title: "Other", drawing: [.clipping, .colorPicker, .clear])
     ]
     
     private let tableView: UITableView = {
@@ -91,12 +92,19 @@ extension DrawSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let drawingType = data[indexPath.section].drawing[indexPath.item]
         switch drawingType {
-        case .circle, .line, .ellipse, .fill, .polygon:
+        case .circle, .line, .ellipse, .fillShape, .fillPolygon, .polygon:
             provider?.type = drawingType
+        case .clipping:
+            let controller = ClippingViewController()
+            let wrapper = UINavigationController(rootViewController: controller)
+            wrapper.modalPresentationStyle = .fullScreen
+            present(wrapper, animated: true, completion: {
+                tableView.deselectRow(at: indexPath, animated: false)
+            })
         case .colorPicker:
             let controller = UIColorPickerViewController()
             controller.delegate = self
-            present(controller, animated: true, completion: nil)
+            present(controller, animated: true)
         case .clear:
             provider?.clear()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
