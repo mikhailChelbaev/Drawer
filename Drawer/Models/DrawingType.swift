@@ -11,12 +11,19 @@ enum DrawingType {
     case line(custom: Bool)
     case circle(custom: Bool)
     case ellipse(custom: Bool)
+    case polygon
+
     case colorPicker
     case clear
+    
     case fillShape
     case fillPolygon
-    case polygon
+    
     case clipping
+    
+    case bezier
+    case spline
+    case casteljauBezier
     
     var pretty: String {
         switch self {
@@ -38,6 +45,12 @@ enum DrawingType {
             return "Fill polygon"
         case .clipping:
             return "Clip"
+        case .bezier:
+            return "Bezier curve"
+        case .spline:
+            return "B-Spline"
+        case .casteljauBezier:
+            return "Casteljau Bezier curve"
         }
     }
     
@@ -61,6 +74,12 @@ enum DrawingType {
             return UIImage(systemName: "pentagon")
         case .clipping:
             return UIImage(systemName: "square.dashed")
+        case .bezier:
+            return UIImage(systemName: "point.topleft.down.curvedto.point.bottomright.up")
+        case .spline:
+            return UIImage(systemName: "point.topleft.down.curvedto.point.bottomright.up.fill")
+        case .casteljauBezier:
+            return UIImage(systemName: "point.topleft.down.curvedto.point.filled.bottomright.up")
         }
     }
 }

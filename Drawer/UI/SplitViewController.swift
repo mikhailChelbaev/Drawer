@@ -9,21 +9,23 @@ import UIKit
 
 final class SplitViewController: UISplitViewController {
     
-    private let settings: DrawSettingsViewController = .init()
+    private let settings: DrawSettingsViewController
     
-    private let drawing: MainDrawingViewController = .init()
+    private let drawing: DrawingViewController
     
-    init() {
+    init(settings: DrawSettingsViewController, drawing: DrawingViewController) {
+        self.settings = settings
+        self.drawing = drawing
+        
         super.init(nibName: nil, bundle: nil)
         
         let settingsWrapper = UINavigationController(rootViewController: settings)
         settings.title = "Board"
         settingsWrapper.navigationBar.prefersLargeTitles = true
         settingsWrapper.navigationBar.backgroundColor = .systemGroupedBackground
+        settings.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeController))
         
         viewControllers = [settingsWrapper, drawing]
-        
-        settings.provider = drawing
         
         minimumPrimaryColumnWidth = 400
     }
@@ -59,6 +61,10 @@ final class SplitViewController: UISplitViewController {
                 property("collectionBehavior", object: window, set: [fullScreenNone], clear: [fullScreenPrimary, fullScreenAuxiliary])
             }
         }
+    }
+    
+    @objc private func closeController() {
+        dismiss(animated: true, completion: nil)
     }
     
 }

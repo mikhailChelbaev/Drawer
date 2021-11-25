@@ -89,7 +89,7 @@ final class ClippingViewController: DrawingViewController {
     
     private func setUpNavBar() {
         title = "Clipping"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(closeController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeController))
     }
     
     private func commonInit() {

@@ -1,11 +1,22 @@
 //
-//  BaseDrawingViewController.swift
+//  DrawingViewController.swift
 //  Drawer
 //
 //  Created by Mikhail on 16.11.2021.
 //
 
 import UIKit
+
+// MARK: - DrawerProvider
+
+protocol DrawerProvider: AnyObject {
+    var type: DrawingType { set get }
+    var color: UIColor { set get }
+    
+    func clear()
+}
+
+// MARK: - DrawingViewController
 
 class DrawingViewController: UIViewController {
     

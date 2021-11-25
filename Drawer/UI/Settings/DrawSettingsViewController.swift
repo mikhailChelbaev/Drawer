@@ -12,27 +12,22 @@ class DrawSettingsViewController: UIViewController {
     
     weak var provider: DrawerProvider?
     
-    private let data: [SectionDataSource] = [
-        .init(title: "Line", drawing: [.line(custom: true), .line(custom: false), .polygon]),
-        .init(title: "Circle", drawing: [.circle(custom: true), .circle(custom: false)]),
-        .init(title: "Ellipse", drawing: [.ellipse(custom: true), .ellipse(custom: false)]),
-        .init(title: "Fill", drawing: [.fillShape]),
-        .init(title: "Other", drawing: [.clipping, .colorPicker, .clear])
-    ]
+    private let data: [SectionDataSource]
     
     private let tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .insetGrouped)
         return tv
     }()
     
-    private let aboutDeveloperButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("About developer", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.backgroundColor = .clear
-        return button
-    }()
-
+    init(data: [SectionDataSource]) {
+        self.data = data
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,20 +36,10 @@ class DrawSettingsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        view.addSubview(aboutDeveloperButton)
-        aboutDeveloperButton.stickToSuperviewEdges([.left, .right, .bottom], insets: .init(top: 0, left: 0, bottom: 20, right: 0))
-        
         view.addSubview(tableView)
-        tableView.stickToSuperviewEdges([.left, .right, .top], insets: .init(top: 20, left: 0, bottom: 0, right: 0))
-        tableView.bottom(20, to: aboutDeveloperButton)
+        tableView.stickToSuperviewEdges(.all, insets: .init(top: 20, left: 0, bottom: 20, right: 0))
         
         tableView.selectRow(at: .init(row: 0, section: 0), animated: false, scrollPosition: .top)
-        aboutDeveloperButton.addTarget(self, action: #selector(showAboutDeveloper), for: .touchUpInside)
-    }
-    
-    @objc private func showAboutDeveloper() {
-        let controller = UIHostingController(rootView: AboutDeveloperView())
-        present(controller, animated: true, completion: nil)
     }
 
 }
@@ -92,7 +77,9 @@ extension DrawSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let drawingType = data[indexPath.section].drawing[indexPath.item]
         switch drawingType {
-        case .circle, .line, .ellipse, .fillShape, .fillPolygon, .polygon:
+        case .circle, .line, .ellipse, .fillShape, .fillPolygon, .polygon: // primitives
+            provider?.type = drawingType
+        case .bezier, .spline, .casteljauBezier: // curves
             provider?.type = drawingType
         case .clipping:
             let controller = ClippingViewController()

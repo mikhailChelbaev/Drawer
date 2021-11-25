@@ -7,18 +7,7 @@
 
 import UIKit
 
-// MARK: - DrawerProvider
-
-protocol DrawerProvider: AnyObject {
-    var type: DrawingType { set get }
-    var color: UIColor { set get }
-    
-    func clear()
-}
-
-// MARK: - MainDrawingViewController
-
-final class MainDrawingViewController: DrawingViewController, DrawerProvider {
+final class PrimitivesDrawingViewController: DrawingViewController, DrawerProvider {
     
     // MARK: - drawers
     
