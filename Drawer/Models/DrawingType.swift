@@ -25,6 +25,10 @@ enum DrawingType {
     case spline
     case casteljauBezier
     
+    case cube
+    case pyramid
+    case diamond
+    
     var pretty: String {
         switch self {
         case .line(let custom):
@@ -51,6 +55,12 @@ enum DrawingType {
             return "B-Spline"
         case .casteljauBezier:
             return "Casteljau Bezier curve"
+        case .cube:
+            return "Cube"
+        case .pyramid:
+            return "Pyramid"
+        case .diamond:
+            return "Diamond"
         }
     }
     
@@ -80,6 +90,12 @@ enum DrawingType {
             return UIImage(systemName: "point.topleft.down.curvedto.point.bottomright.up.fill")
         case .casteljauBezier:
             return UIImage(systemName: "point.topleft.down.curvedto.point.filled.bottomright.up")
+        case .cube:
+            return UIImage(systemName: "cube")
+        case .pyramid:
+            return UIImage(systemName: "pyramid")
+        case .diamond:
+            return UIImage(systemName: "suit.diamond")
         }
     }
 }

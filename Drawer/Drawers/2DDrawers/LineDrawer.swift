@@ -10,18 +10,18 @@ import CoreGraphics
 
 final class LineDrawer: ShapeDrawer {
     
-    func drawDefault(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board) {
+    func drawDefault(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: Board) {
         context.move(to: p1)
         context.addLine(to: p2)
-        drawLine(from: p1, to: p2, context: context, board: &board, onlyOnBoard: true)
+        drawLine(from: p1, to: p2, context: context, board: board, onlyOnBoard: true)
     }
     
-    func drawCustom(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board) {
-        drawLine(from: p1, to: p2, context: context, board: &board, onlyOnBoard: false)
+    func drawCustom(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: Board) {
+        drawLine(from: p1, to: p2, context: context, board: board, onlyOnBoard: false)
     }
     
     @discardableResult
-    func drawLine(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: inout Board, onlyOnBoard: Bool) -> [CGPoint] {
+    func drawLine(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: Board, onlyOnBoard: Bool) -> [CGPoint] {
         var points: [CGPoint] = []
         
         let x1 = Int(p1.x)
@@ -44,7 +44,7 @@ final class LineDrawer: ShapeDrawer {
         let sy = y1 < y2 ? 1 : -1 // y sign
         
         // draw first point
-        drawPixel(point: .init(x: x1, y: y1), context: context, board: &board, onlyOnBoard: onlyOnBoard)
+        drawPixel(point: .init(x: x1, y: y1), context: context, board: board, onlyOnBoard: onlyOnBoard)
         points.append(.init(x: x1, y: y1))
         
         while (abs(x) < a || abs(y) < b) {
@@ -60,7 +60,7 @@ final class LineDrawer: ShapeDrawer {
             } else {
                 ex += delta_exS
             }
-            drawPixel(point: .init(x: x1 + x, y: y1 + y), context: context, board: &board, onlyOnBoard: onlyOnBoard)
+            drawPixel(point: .init(x: x1 + x, y: y1 + y), context: context, board: board, onlyOnBoard: onlyOnBoard)
             points.append(.init(x: x1 + x, y: y1 + y))
         }
         

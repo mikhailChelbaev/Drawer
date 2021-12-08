@@ -70,36 +70,14 @@ final class CurvesDrawingViewController: DrawingViewController, DrawerProvider {
         didSet { update() }
     }
     
-    // MARK: - set up
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        commonInit()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func commonInit() {
-        view.backgroundColor = .systemBackground
-        imageView.isUserInteractionEnabled = true
+    override func commonInit() {
+        super.commonInit()
+        
         optionsView.handler = self
         optionsView.setState(.disabled, for: .closeCurve)
         
-        view.addSubview(imageView)
-        imageView.stickToSuperviewEdges(.all)
-        
         view.addSubview(optionsView)
         optionsView.stickToSuperviewSafeEdges([.right, .top], insets: .init(top: 20, left: 0, bottom: 0, right: 20))
-        
-        // draw empty image
-        drawImage(drawing: { _ in })
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if board == nil { board = .init(size: imageView.frame.size, color: color) }
     }
     
     // MARK: - touches
@@ -173,7 +151,8 @@ final class CurvesDrawingViewController: DrawingViewController, DrawerProvider {
             }
             
             for (i, point) in drawingPoints.enumerated() {
-                context.setFillColor(UIColor.red.cgColor)
+                let dotColor: UIColor = i % 4 == 0 || i % 4 == 3 ? .red : .magenta
+                context.setFillColor(dotColor.cgColor)
                 context.addEllipse(in: .init(
                     x: point.x - dotRadius,
                     y: point.y - dotRadius,
@@ -187,7 +166,7 @@ final class CurvesDrawingViewController: DrawingViewController, DrawerProvider {
                 context.setBlendMode(.normal)
                 
                 if referenceLine {
-                    lineDrawer.drawCustom(from: drawingPoints[i - 1], to: point, context: context, board: &board)
+                    lineDrawer.drawCustom(from: drawingPoints[i - 1], to: point, context: context, board: board)
                     context.setLineWidth(2)
                     context.setStrokeColor(color.cgColor)
                     context.strokePath()
@@ -200,14 +179,14 @@ final class CurvesDrawingViewController: DrawingViewController, DrawerProvider {
                 
                 if compoundCurve {
                     for batch in batchesForCompoundBezierCurve(points: drawingPoints) {
-                        drawer.draw(points: batch, context: context, board: &board)
+                        drawer.draw(points: batch, context: context)
                     }
                 } else {
-                    drawer.draw( points: points, context: context, board: &board)
+                    drawer.draw( points: points, context: context)
                 }
             case .spline:
                 for batch in splitBatchesForSpline(points: drawingPoints) {
-                    spline.draw(points: batch, context: context, board: &board)
+                    spline.draw(points: batch, context: context)
                 }
             default:
                 break

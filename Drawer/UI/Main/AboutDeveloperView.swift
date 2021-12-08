@@ -30,6 +30,16 @@ struct AboutDeveloperView: View {
                     Spacer()
                 }.padding(.leading, 20)
                 HStack {
+                    Text("Task 3:").bold()
+                    Text("Bezier and B-Spline curves")
+                    Spacer()
+                }.padding(.leading, 20)
+                HStack {
+                    Text("Task 4:").bold()
+                    Text("3D objects")
+                    Spacer()
+                }.padding(.leading, 20)
+                HStack {
                     Text("IDE:").bold()
                     Text("XCode 13")
                     Spacer()

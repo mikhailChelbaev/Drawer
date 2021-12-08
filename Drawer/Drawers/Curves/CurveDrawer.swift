@@ -5,11 +5,11 @@
 //  Created by Mikhail on 24.11.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol CurveDrawer: PixelDrawer {
     
-    func draw(points: [CGPoint], context: CGContext, board: inout Board)
+    func draw(points: [CGPoint], context: CGContext)
     
 }
 

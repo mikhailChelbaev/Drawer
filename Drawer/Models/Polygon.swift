@@ -5,7 +5,7 @@
 //  Created by Mikhail on 24.10.2021.
 //
 
-import Foundation
+import UIKit
 
 struct Polygon {
     

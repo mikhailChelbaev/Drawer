@@ -9,7 +9,7 @@ import UIKit
 
 final class CasteljauBezierCurve: CurveDrawer {
     
-    func draw(points: [CGPoint], context: CGContext, board: inout Board) {
+    func draw(points: [CGPoint], context: CGContext) {
         let n = points.count - 1
         
         guard n > 0 else { return }
@@ -20,7 +20,7 @@ final class CasteljauBezierCurve: CurveDrawer {
         for t in stride(from: 0, to: 1, by: 0.001) {
             let x: CGFloat = b(t: t, p: xs)
             let y: CGFloat = b(t: t, p: ys)
-            drawPixel(Int(x), Int(y), context, board: &board)
+            drawPixel(Int(x), Int(y), context)
         }
     }
     

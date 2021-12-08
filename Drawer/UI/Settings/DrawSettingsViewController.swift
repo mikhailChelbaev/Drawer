@@ -81,6 +81,8 @@ extension DrawSettingsViewController: UITableViewDelegate {
             provider?.type = drawingType
         case .bezier, .spline, .casteljauBezier: // curves
             provider?.type = drawingType
+        case .cube, .pyramid, .diamond: // 3D
+            provider?.type = drawingType
         case .clipping:
             let controller = ClippingViewController()
             let wrapper = UINavigationController(rootViewController: controller)

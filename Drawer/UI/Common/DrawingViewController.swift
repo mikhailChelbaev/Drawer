@@ -46,6 +46,34 @@ class DrawingViewController: UIViewController {
         }
     }
     
+    // MARK: - set up
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func commonInit() {
+        view.backgroundColor = .systemBackground
+        
+        view.addSubview(imageView)
+        imageView.stickToSuperviewEdges(.all)
+        
+        imageView.isUserInteractionEnabled = true
+        
+        // draw empty image
+        drawImage(drawing: { _ in })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if board == nil { board = .init(size: imageView.frame.size, color: color) }
+    }
+    
     // MARK: - helpers
     
     func drawImage(drawing: (CGContext) -> Void) {

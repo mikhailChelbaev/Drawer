@@ -19,6 +19,7 @@
 		7432D859274E508100D6D4CC /* BezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7432D858274E508100D6D4CC /* BezierCurve.swift */; };
 		7432D85C274E7F1200D6D4CC /* CurveOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7432D85B274E7F1200D6D4CC /* CurveOptionItemView.swift */; };
 		7432D85E274E80A900D6D4CC /* CurveOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7432D85D274E80A900D6D4CC /* CurveOptionsView.swift */; };
+		7436ED7A275CD13C0079D036 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7436ED79275CD13C0079D036 /* Cube.swift */; };
 		7441C7EE27430DC9004CD180 /* ClippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7441C7ED27430DC9004CD180 /* ClippingViewController.swift */; };
 		7454FB0D274D6D6600F17547 /* SelectDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454FB0C274D6D6600F17547 /* SelectDrawingViewController.swift */; };
 		7454FB0F274D6DEA00F17547 /* CurvesDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7454FB0E274D6DEA00F17547 /* CurvesDrawingViewController.swift */; };
@@ -37,8 +38,18 @@
 		74810011270B9EB700BAB024 /* SectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810010270B9EB700BAB024 /* SectionDataSource.swift */; };
 		74810013270B9ECE00BAB024 /* DrawingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810012270B9ECE00BAB024 /* DrawingType.swift */; };
 		74810015270BAF9A00BAB024 /* AboutDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */; };
+		749650252760ABFC0061F01C /* Object3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650242760ABFC0061F01C /* Object3D.swift */; };
+		749650272760AC0F0061F01C /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650262760AC0F0061F01C /* Point3D.swift */; };
+		749650292760AC320061F01C /* CGPoint+Translated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650282760AC320061F01C /* CGPoint+Translated.swift */; };
+		7496502B2760B6BD0061F01C /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502A2760B6BD0061F01C /* Pyramid.swift */; };
+		7496502D2760E1BF0061F01C /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502C2760E1BE0061F01C /* Diamond.swift */; };
+		749650302760E84A0061F01C /* DecelerationTimingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502F2760E84A0061F01C /* DecelerationTimingParameters.swift */; };
+		749650322760E8650061F01C /* TimerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650312760E8650061F01C /* TimerAnimation.swift */; };
 		74AC8A94274F0DAE0084A48D /* CasteljauBezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */; };
+		74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */; };
+		74C89234275FE4D90045798E /* Object3DOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89233275FE4D90045798E /* Object3DOptionsView.swift */; };
 		74CD02B1273B1A67007F0CFA /* UIColor+IsEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */; };
+		74D240A7275A66C600123A52 /* Objects3DDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D240A6275A66C600123A52 /* Objects3DDrawingViewController.swift */; };
 		74D54B342743C04A008D5DC2 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D54B332743C04A008D5DC2 /* DrawingViewController.swift */; };
 		74F886E12743D1E600C6CF55 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F886E02743D1E600C6CF55 /* Line.swift */; };
 		74F886E32743D27A00C6CF55 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F886E22743D27A00C6CF55 /* Rectangle.swift */; };
@@ -57,6 +68,7 @@
 		7432D858274E508100D6D4CC /* BezierCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierCurve.swift; sourceTree = "<group>"; };
 		7432D85B274E7F1200D6D4CC /* CurveOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurveOptionItemView.swift; sourceTree = "<group>"; };
 		7432D85D274E80A900D6D4CC /* CurveOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurveOptionsView.swift; sourceTree = "<group>"; };
+		7436ED79275CD13C0079D036 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		7441C7ED27430DC9004CD180 /* ClippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClippingViewController.swift; sourceTree = "<group>"; };
 		7454FB0C274D6D6600F17547 /* SelectDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDrawingViewController.swift; sourceTree = "<group>"; };
 		7454FB0E274D6DEA00F17547 /* CurvesDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvesDrawingViewController.swift; sourceTree = "<group>"; };
@@ -78,8 +90,18 @@
 		74810010270B9EB700BAB024 /* SectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDataSource.swift; sourceTree = "<group>"; };
 		74810012270B9ECE00BAB024 /* DrawingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingType.swift; sourceTree = "<group>"; };
 		74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDeveloperView.swift; sourceTree = "<group>"; };
+		749650242760ABFC0061F01C /* Object3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3D.swift; sourceTree = "<group>"; };
+		749650262760AC0F0061F01C /* Point3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
+		749650282760AC320061F01C /* CGPoint+Translated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Translated.swift"; sourceTree = "<group>"; };
+		7496502A2760B6BD0061F01C /* Pyramid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
+		7496502C2760E1BE0061F01C /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		7496502F2760E84A0061F01C /* DecelerationTimingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecelerationTimingParameters.swift; sourceTree = "<group>"; };
+		749650312760E8650061F01C /* TimerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimation.swift; sourceTree = "<group>"; };
 		74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasteljauBezierCurve.swift; sourceTree = "<group>"; };
+		74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionItemView.swift; sourceTree = "<group>"; };
+		74C89233275FE4D90045798E /* Object3DOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionsView.swift; sourceTree = "<group>"; };
 		74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+IsEqual.swift"; sourceTree = "<group>"; };
+		74D240A6275A66C600123A52 /* Objects3DDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects3DDrawingViewController.swift; sourceTree = "<group>"; };
 		74D54B332743C04A008D5DC2 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		74F886E02743D1E600C6CF55 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		74F886E22743D27A00C6CF55 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
@@ -128,10 +150,33 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7436ED77275CD0EA0079D036 /* Drawers */ = {
+			isa = PBXGroup;
+			children = (
+				74810007270B9C2900BAB024 /* 2DDrawers */,
+				7458D062272710DA0055011C /* Fillers */,
+				7432D855274E4FE000D6D4CC /* Curves */,
+				7436ED78275CD1020079D036 /* 3DDrawers */,
+			);
+			path = Drawers;
+			sourceTree = "<group>";
+		};
+		7436ED78275CD1020079D036 /* 3DDrawers */ = {
+			isa = PBXGroup;
+			children = (
+				749650242760ABFC0061F01C /* Object3D.swift */,
+				7436ED79275CD13C0079D036 /* Cube.swift */,
+				7496502A2760B6BD0061F01C /* Pyramid.swift */,
+				7496502C2760E1BE0061F01C /* Diamond.swift */,
+			);
+			path = 3DDrawers;
+			sourceTree = "<group>";
+		};
 		7454FB10274D6E0300F17547 /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
 				742F0D23270A4E7B002B3F8D /* PrimitivesDrawingViewController.swift */,
+				7441C7ED27430DC9004CD180 /* ClippingViewController.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -183,9 +228,7 @@
 			children = (
 				7474ED322709C8C1004E8B95 /* Core */,
 				7474ED312709C8B5004E8B95 /* UI */,
-				74810007270B9C2900BAB024 /* Drawers */,
-				7458D062272710DA0055011C /* Fillers */,
-				7432D855274E4FE000D6D4CC /* Curves */,
+				7436ED77275CD0EA0079D036 /* Drawers */,
 				742F0D1E270A4878002B3F8D /* Models */,
 				7474ED2E2709C864004E8B95 /* Helpers */,
 				7474ED2D2709C7D7004E8B95 /* Drawer.entitlements */,
@@ -203,6 +246,8 @@
 				742152AA2714E51600802062 /* Stack.swift */,
 				7418039227235F670046F06C /* Board.swift */,
 				74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */,
+				749650262760AC0F0061F01C /* Point3D.swift */,
+				749650282760AC320061F01C /* CGPoint+Translated.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -211,13 +256,11 @@
 			isa = PBXGroup;
 			children = (
 				74D54B322743C034008D5DC2 /* Common */,
+				74D240A4275A653500123A52 /* Main */,
 				7454FB10274D6E0300F17547 /* Primitives */,
 				7454FB11274D6E0D00F17547 /* Curves */,
+				74D240A5275A66A200123A52 /* 3DObjects */,
 				7454FB18274D6E4600F17547 /* Settings */,
-				742F0D21270A4E0D002B3F8D /* SplitViewController.swift */,
-				74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */,
-				7441C7ED27430DC9004CD180 /* ClippingViewController.swift */,
-				7454FB0C274D6D6600F17547 /* SelectDrawingViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -231,7 +274,7 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		74810007270B9C2900BAB024 /* Drawers */ = {
+		74810007270B9C2900BAB024 /* 2DDrawers */ = {
 			isa = PBXGroup;
 			children = (
 				742152A82714DB7600802062 /* PixelDrawer.swift */,
@@ -241,7 +284,45 @@
 				7481000E270B9DD900BAB024 /* EllipseDrawer.swift */,
 				74302BC92724287B004F24F0 /* PolygonDrawer.swift */,
 			);
-			path = Drawers;
+			path = 2DDrawers;
+			sourceTree = "<group>";
+		};
+		7496502E2760E8310061F01C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7496502F2760E84A0061F01C /* DecelerationTimingParameters.swift */,
+				749650312760E8650061F01C /* TimerAnimation.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		74C89230275FE48B0045798E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74C89233275FE4D90045798E /* Object3DOptionsView.swift */,
+				74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		74D240A4275A653500123A52 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				742F0D21270A4E0D002B3F8D /* SplitViewController.swift */,
+				74810014270BAF9A00BAB024 /* AboutDeveloperView.swift */,
+				7454FB0C274D6D6600F17547 /* SelectDrawingViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		74D240A5275A66A200123A52 /* 3DObjects */ = {
+			isa = PBXGroup;
+			children = (
+				74D240A6275A66C600123A52 /* Objects3DDrawingViewController.swift */,
+				7496502E2760E8310061F01C /* Helpers */,
+				74C89230275FE48B0045798E /* Views */,
+			);
+			path = 3DObjects;
 			sourceTree = "<group>";
 		};
 		74D54B322743C034008D5DC2 /* Common */ = {
@@ -327,11 +408,18 @@
 				74D54B342743C04A008D5DC2 /* DrawingViewController.swift in Sources */,
 				7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */,
 				7481000F270B9DD900BAB024 /* EllipseDrawer.swift in Sources */,
+				749650252760ABFC0061F01C /* Object3D.swift in Sources */,
 				742152AB2714E51600802062 /* Stack.swift in Sources */,
+				749650302760E84A0061F01C /* DecelerationTimingParameters.swift in Sources */,
 				7458D064272710EA0055011C /* PolygonFiller.swift in Sources */,
+				7436ED7A275CD13C0079D036 /* Cube.swift in Sources */,
+				749650272760AC0F0061F01C /* Point3D.swift in Sources */,
 				7418039327235F670046F06C /* Board.swift in Sources */,
+				7496502B2760B6BD0061F01C /* Pyramid.swift in Sources */,
 				74AC8A94274F0DAE0084A48D /* CasteljauBezierCurve.swift in Sources */,
+				749650292760AC320061F01C /* CGPoint+Translated.swift in Sources */,
 				742152A92714DB7600802062 /* PixelDrawer.swift in Sources */,
+				749650322760E8650061F01C /* TimerAnimation.swift in Sources */,
 				7464762827253EC70079BAE2 /* Polygon.swift in Sources */,
 				74810013270B9ECE00BAB024 /* DrawingType.swift in Sources */,
 				7474ED302709C88E004E8B95 /* UIView+Layout.swift in Sources */,
@@ -340,11 +428,14 @@
 				7454FB0D274D6D6600F17547 /* SelectDrawingViewController.swift in Sources */,
 				74810015270BAF9A00BAB024 /* AboutDeveloperView.swift in Sources */,
 				74810009270B9C3F00BAB024 /* ShapeDrawer.swift in Sources */,
+				74D240A7275A66C600123A52 /* Objects3DDrawingViewController.swift in Sources */,
+				7496502D2760E1BF0061F01C /* Diamond.swift in Sources */,
 				7432D859274E508100D6D4CC /* BezierCurve.swift in Sources */,
 				74F886E32743D27A00C6CF55 /* Rectangle.swift in Sources */,
 				7432D85E274E80A900D6D4CC /* CurveOptionsView.swift in Sources */,
 				7481000D270B9DA100BAB024 /* CircleDrawer.swift in Sources */,
 				74CD02B1273B1A67007F0CFA /* UIColor+IsEqual.swift in Sources */,
+				74C89234275FE4D90045798E /* Object3DOptionsView.swift in Sources */,
 				7474ED1A2709C7BE004E8B95 /* AppDelegate.swift in Sources */,
 				742F0D22270A4E0D002B3F8D /* SplitViewController.swift in Sources */,
 				7474ED1C2709C7BE004E8B95 /* SceneDelegate.swift in Sources */,
@@ -352,6 +443,7 @@
 				74F886E12743D1E600C6CF55 /* Line.swift in Sources */,
 				742F0D24270A4E7B002B3F8D /* PrimitivesDrawingViewController.swift in Sources */,
 				7432D857274E4FF500D6D4CC /* CurveDrawer.swift in Sources */,
+				74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */,
 				74302BCA2724287B004F24F0 /* PolygonDrawer.swift in Sources */,
 				7432D85C274E7F1200D6D4CC /* CurveOptionItemView.swift in Sources */,
 				7432B706274ED6C00062C794 /* BSplineCurve.swift in Sources */,

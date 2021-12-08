@@ -7,15 +7,15 @@
 
 import UIKit
 
-struct Board {
+class Board {
     
     private var board: [[UIColor]] = []
     
     var drawingColor: UIColor
     
-    private let width: Int
+    let width: Int
     
-    private let height: Int
+    let height: Int
     
     init(width: Int, height: Int, color: UIColor) {
         self.width = width
@@ -23,12 +23,12 @@ struct Board {
         drawingColor = color
         if board.isEmpty {
             for _ in 0..<height {
-                board.append([UIColor](repeating: .white, count: width))
+                board.append([UIColor](repeating: .systemBackground, count: width))
             }
         }
     }
     
-    mutating func setPixel(_ x: Int, _ y: Int, color: UIColor? = nil) {
+    func setPixel(_ x: Int, _ y: Int, color: UIColor? = nil) {
         guard x >= 0 && x < width && y >= 0 && y < height else { return }
         board[y][x] = color ?? drawingColor
     }
@@ -69,15 +69,15 @@ struct Board {
 
 extension Board {
     
-    init(size: CGSize, color: UIColor) {
+    convenience init(size: CGSize, color: UIColor) {
         self.init(width: Int(size.width), height: Int(size.height), color: color)
     }
     
-    mutating func setPixel(_ x: CGFloat, _ y: CGFloat, color: UIColor? = nil) {
+    func setPixel(_ x: CGFloat, _ y: CGFloat, color: UIColor? = nil) {
         setPixel(Int(x), Int(y), color: color)
     }
     
-    mutating func setPixel(point: CGPoint, color: UIColor? = nil) {
+    func setPixel(point: CGPoint, color: UIColor? = nil) {
         setPixel(Int(point.x), Int(point.y), color: color)
     }
     

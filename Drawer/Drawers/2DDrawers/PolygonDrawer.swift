@@ -5,7 +5,7 @@
 //  Created by Mikhail on 23.10.2021.
 //
 
-import Foundation
+import UIKit
 
 final class PolygonDrawer {
     
@@ -26,7 +26,7 @@ final class PolygonDrawer {
     func addPoint(
         _ point: CGPoint,
         context: CGContext,
-        board: inout Board,
+        board: Board,
         completion: (Polygon) -> Void
     ) {
         isDrawing = true
@@ -40,7 +40,7 @@ final class PolygonDrawer {
                             from: polygon[0],
                             to: p1,
                             context: context,
-                            board: &board,
+                            board: board,
                             onlyOnBoard: false
                         )
                     )
@@ -54,7 +54,7 @@ final class PolygonDrawer {
                     from: p1,
                     to: point,
                     context: context,
-                    board: &board,
+                    board: board,
                     onlyOnBoard: false
                 )
             )

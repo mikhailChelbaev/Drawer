@@ -76,12 +76,6 @@ final class ClippingViewController: DrawingViewController {
         cleanButton = createButton(title: "Reset")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpNavBar()
-        commonInit()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         board = Board(size: imageView.frame.size, color: .systemBlue)
@@ -92,7 +86,8 @@ final class ClippingViewController: DrawingViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeController))
     }
     
-    private func commonInit() {
+    override func commonInit() {
+        setUpNavBar()
         view.backgroundColor = .white
         
         actionTitle.text = step.text()
@@ -193,7 +188,7 @@ final class ClippingViewController: DrawingViewController {
     
     func drawLine(_ line: Line) {
         drawImage { context in
-            lineDrawer.drawCustom(from: line.p1, to: line.p2, context: context, board: &board)
+            lineDrawer.drawCustom(from: line.p1, to: line.p2, context: context, board: board)
         }
     }
     
@@ -203,25 +198,25 @@ final class ClippingViewController: DrawingViewController {
                 from: rectangle.topLeft,
                 to: rectangle.topRight,
                 context: context,
-                board: &board
+                board: board
             )
             lineDrawer.drawCustom(
                 from: rectangle.topLeft,
                 to: rectangle.bottomLeft,
                 context: context,
-                board: &board
+                board: board
             )
             lineDrawer.drawCustom(
                 from: rectangle.bottomLeft,
                 to: rectangle.bottomRight,
                 context: context,
-                board: &board
+                board: board
             )
             lineDrawer.drawCustom(
                 from: rectangle.bottomRight,
                 to: rectangle.topRight,
                 context: context,
-                board: &board
+                board: board
             )
         }
     }

@@ -9,7 +9,7 @@ import UIKit
 
 final class BezierCurve: CurveDrawer {
     
-    func draw(points: [CGPoint], context: CGContext, board: inout Board) {
+    func draw(points: [CGPoint], context: CGContext) {
         let n = points.count - 1
         
         guard n > 0 else { return }
@@ -21,15 +21,15 @@ final class BezierCurve: CurveDrawer {
                 x += b_i(t: t, n: n, i: i, p: point.x)
                 y += b_i(t: t, n: n, i: i, p: point.y)
             }
-            drawPixel(Int(x), Int(y), context, board: &board)
+            drawPixel(Int(x), Int(y), context)
         }
     }
     
     private func b_i(t: CGFloat, n: Int, i: Int, p: CGFloat) -> CGFloat {
-        return p * (factorial(n) / (factorial(i) * factorial(n - i))) * pow(t, CGFloat(i)) * pow(1 - t, CGFloat(n - i))
+        return p * (f(n) / (f(i) * f(n - i))) * pow(t, CGFloat(i)) * pow(1 - t, CGFloat(n - i))
     }
     
-    func factorial(_ n: Int) -> Double {
+    func f(_ n: Int) -> Double {
         guard n > 1 else { return 1 }
         return (1...n).map(Double.init).reduce(1.0, *)
     }

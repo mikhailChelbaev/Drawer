@@ -31,34 +31,6 @@ final class PrimitivesDrawingViewController: DrawingViewController, DrawerProvid
     
     private var polygons: [Polygon] = []
     
-    // MARK: - set up
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        commonInit()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func commonInit() {
-        view.backgroundColor = .systemBackground
-        
-        view.addSubview(imageView)
-        imageView.stickToSuperviewEdges(.all)
-        
-        imageView.isUserInteractionEnabled = true
-        
-        // draw empty image
-        drawImage(drawing: { _ in })
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if board == nil { board = .init(size: imageView.frame.size, color: color) }
-    }
-    
     // MARK: - touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,7 +46,7 @@ final class PrimitivesDrawingViewController: DrawingViewController, DrawerProvid
                 imageView.image = board.getImage()
             case .polygon:
                 drawImage { context in
-                    polygonDrawer.addPoint(point, context: context, board: &board) { [weak self] polygon in
+                    polygonDrawer.addPoint(point, context: context, board: board) { [weak self] polygon in
                         self?.polygons.append(polygon)
                     }
                 }
@@ -96,21 +68,21 @@ final class PrimitivesDrawingViewController: DrawingViewController, DrawerProvid
                 switch type {
                 case .line(let custom):
                     if custom {
-                        lineDrawer.drawCustom(from: firstPoint, to: point, context: context, board: &board)
+                        lineDrawer.drawCustom(from: firstPoint, to: point, context: context, board: board)
                     } else {
-                        lineDrawer.drawDefault(from: firstPoint, to: point, context: context, board: &board)
+                        lineDrawer.drawDefault(from: firstPoint, to: point, context: context, board: board)
                     }
                 case .circle(let custom):
                     if custom {
-                        circleDrawer.drawCustom(from: firstPoint, to: point, context: context, board: &board)
+                        circleDrawer.drawCustom(from: firstPoint, to: point, context: context, board: board)
                     } else {
-                        circleDrawer.drawDefault(from: firstPoint, to: point, context: context, board: &board)
+                        circleDrawer.drawDefault(from: firstPoint, to: point, context: context, board: board)
                     }
                 case .ellipse(let custom):
                     if custom {
-                        ellipseDrawer.drawCustom(from: firstPoint, to: point, context: context, board: &board)
+                        ellipseDrawer.drawCustom(from: firstPoint, to: point, context: context, board: board)
                     } else {
-                        ellipseDrawer.drawDefault(from: firstPoint, to: point, context: context, board: &board)
+                        ellipseDrawer.drawDefault(from: firstPoint, to: point, context: context, board: board)
                     }
                 default:
                     break

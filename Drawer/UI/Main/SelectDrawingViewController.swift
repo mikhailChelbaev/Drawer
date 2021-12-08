@@ -13,6 +13,7 @@ final class SelectDrawingViewController: UIViewController {
     enum ShapeTypes {
         case primitives
         case curves
+        case objects
     }
     
     private let label: UILabel = {
@@ -34,10 +35,13 @@ final class SelectDrawingViewController: UIViewController {
     
     private var curvesButton: UIButton!
     
+    private var objectsButton: UIButton!
+    
     override func loadView() {
         super.loadView()
         primitivesButton = createButton(for: .primitives)
         curvesButton = createButton(for: .curves)
+        objectsButton = createButton(for: .objects)
     }
     
     override func viewDidLoad() {
@@ -46,7 +50,9 @@ final class SelectDrawingViewController: UIViewController {
     }
     
     private func commonInit() {
-        let stack = UIStackView(arrangedSubviews: [primitivesButton, curvesButton])
+        view.backgroundColor = .systemBackground
+        
+        let stack = UIStackView(arrangedSubviews: [primitivesButton, curvesButton, objectsButton])
         stack.axis = .vertical
         stack.spacing = 20
         view.addSubview(stack)
@@ -62,6 +68,7 @@ final class SelectDrawingViewController: UIViewController {
         aboutDeveloperButton.addTarget(self, action: #selector(showAboutDeveloper), for: .touchUpInside)
         primitivesButton.addTarget(self, action: #selector(openPrimitives), for: .touchUpInside)
         curvesButton.addTarget(self, action: #selector(openCurves), for: .touchUpInside)
+        objectsButton.addTarget(self, action: #selector(openObjects), for: .touchUpInside)
     }
     
     private func createButton(for type: ShapeTypes) -> UIButton {
@@ -74,7 +81,14 @@ final class SelectDrawingViewController: UIViewController {
     }
     
     func buttonTitle(for type: ShapeTypes) -> String {
-        type == .curves ? "Curves" : "Primitives"
+        switch type {
+        case .primitives:
+            return "Primitives"
+        case .curves:
+            return "Curves"
+        case .objects:
+            return "3D objects"
+        }
     }
     
     func dataSource(for type: ShapeTypes) -> [SectionDataSource] {
@@ -92,6 +106,11 @@ final class SelectDrawingViewController: UIViewController {
                 .init(title: "Curves", drawing: [.bezier, .casteljauBezier, .spline]),
                 .init(title: "Other", drawing: [.colorPicker, .clear])
             ]
+        case .objects:
+            return [
+                .init(title: "3D objects", drawing: [.cube, .pyramid, .diamond]),
+                .init(title: "Other", drawing: [.colorPicker, .clear])
+            ]
         }
     }
     
@@ -104,16 +123,25 @@ final class SelectDrawingViewController: UIViewController {
         let settings = DrawSettingsViewController(data: dataSource(for: .primitives))
         let drawer = PrimitivesDrawingViewController()
         settings.provider = drawer
-        let controller = SplitViewController(settings: settings, drawing: drawer)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
+        openController(settings: settings, drawing: drawer)
     }
     
     @objc private func openCurves() {
         let settings = DrawSettingsViewController(data: dataSource(for: .curves))
         let drawer = CurvesDrawingViewController()
         settings.provider = drawer
-        let controller = SplitViewController(settings: settings, drawing: drawer)
+        openController(settings: settings, drawing: drawer)
+    }
+    
+    @objc private func openObjects() {
+        let settings = DrawSettingsViewController(data: dataSource(for: .objects))
+        let drawer = Objects3DDrawingViewController()
+        settings.provider = drawer
+        openController(settings: settings, drawing: drawer)        
+    }
+    
+    private func openController(settings: DrawSettingsViewController, drawing: DrawingViewController) {
+        let controller = SplitViewController(settings: settings, drawing: drawing)
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true, completion: nil)
     }
