@@ -27,7 +27,11 @@ enum DrawingType {
     
     case cube
     case pyramid
-    case diamond
+    case tetrahedron
+    case octahedron
+    case icosahedron
+    case dodecahedron
+    case sphere
     
     var pretty: String {
         switch self {
@@ -59,8 +63,16 @@ enum DrawingType {
             return "Cube"
         case .pyramid:
             return "Pyramid"
-        case .diamond:
-            return "Diamond"
+        case .tetrahedron:
+            return "Tetrahedron"
+        case .octahedron:
+            return "Octahedron"
+        case .icosahedron:
+            return "Icosahedron"
+        case .dodecahedron:
+            return "Dodecahedron"
+        case .sphere:
+            return "Sphere"
         }
     }
     
@@ -94,8 +106,16 @@ enum DrawingType {
             return UIImage(systemName: "cube")
         case .pyramid:
             return UIImage(systemName: "pyramid")
-        case .diamond:
+        case .tetrahedron:
+            return UIImage(systemName: "triangle")
+        case .octahedron:
             return UIImage(systemName: "suit.diamond")
+        case .icosahedron:
+            return UIImage(systemName: "hexagon")
+        case .dodecahedron:
+            return UIImage(systemName: "octagon")
+        case .sphere:
+            return UIImage(systemName: "circle")
         }
     }
 }

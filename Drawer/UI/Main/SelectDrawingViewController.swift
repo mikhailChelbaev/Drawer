@@ -108,7 +108,7 @@ final class SelectDrawingViewController: UIViewController {
             ]
         case .objects:
             return [
-                .init(title: "3D objects", drawing: [.cube, .pyramid, .diamond]),
+                .init(title: "3D objects", drawing: [.cube, .pyramid, .tetrahedron, .octahedron, .icosahedron, .dodecahedron, .sphere]),
                 .init(title: "Other", drawing: [.colorPicker, .clear])
             ]
         }

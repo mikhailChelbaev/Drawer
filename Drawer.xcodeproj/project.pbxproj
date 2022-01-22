@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740003C92799F8D8000668B3 /* Dodecahedron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740003C82799F8D8000668B3 /* Dodecahedron.swift */; };
 		7418039327235F670046F06C /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7418039227235F670046F06C /* Board.swift */; };
 		742152A72714DB2500802062 /* ShapeFiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742152A62714DB2500802062 /* ShapeFiller.swift */; };
 		742152A92714DB7600802062 /* PixelDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742152A82714DB7600802062 /* PixelDrawer.swift */; };
@@ -42,20 +43,24 @@
 		749650272760AC0F0061F01C /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650262760AC0F0061F01C /* Point3D.swift */; };
 		749650292760AC320061F01C /* CGPoint+Translated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650282760AC320061F01C /* CGPoint+Translated.swift */; };
 		7496502B2760B6BD0061F01C /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502A2760B6BD0061F01C /* Pyramid.swift */; };
-		7496502D2760E1BF0061F01C /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502C2760E1BE0061F01C /* Diamond.swift */; };
 		749650302760E84A0061F01C /* DecelerationTimingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502F2760E84A0061F01C /* DecelerationTimingParameters.swift */; };
 		749650322760E8650061F01C /* TimerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650312760E8650061F01C /* TimerAnimation.swift */; };
 		74AC8A94274F0DAE0084A48D /* CasteljauBezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */; };
 		74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */; };
 		74C89234275FE4D90045798E /* Object3DOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89233275FE4D90045798E /* Object3DOptionsView.swift */; };
 		74CD02B1273B1A67007F0CFA /* UIColor+IsEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */; };
+		74CDC671279B5B2700D9C747 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CDC670279B5B2700D9C747 /* Sphere.swift */; };
 		74D240A7275A66C600123A52 /* Objects3DDrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D240A6275A66C600123A52 /* Objects3DDrawingViewController.swift */; };
+		74D402C42798AD88002CCFB3 /* Octahedron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D402C32798AD88002CCFB3 /* Octahedron.swift */; };
+		74D402C62798B437002CCFB3 /* Icosahedron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D402C52798B437002CCFB3 /* Icosahedron.swift */; };
 		74D54B342743C04A008D5DC2 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D54B332743C04A008D5DC2 /* DrawingViewController.swift */; };
+		74F14D6D2796B6B3000432B5 /* Tetrahedron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F14D6C2796B6B3000432B5 /* Tetrahedron.swift */; };
 		74F886E12743D1E600C6CF55 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F886E02743D1E600C6CF55 /* Line.swift */; };
 		74F886E32743D27A00C6CF55 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F886E22743D27A00C6CF55 /* Rectangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		740003C82799F8D8000668B3 /* Dodecahedron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dodecahedron.swift; sourceTree = "<group>"; };
 		7418039227235F670046F06C /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		742152A62714DB2500802062 /* ShapeFiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFiller.swift; sourceTree = "<group>"; };
 		742152A82714DB7600802062 /* PixelDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelDrawer.swift; sourceTree = "<group>"; };
@@ -94,15 +99,18 @@
 		749650262760AC0F0061F01C /* Point3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
 		749650282760AC320061F01C /* CGPoint+Translated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Translated.swift"; sourceTree = "<group>"; };
 		7496502A2760B6BD0061F01C /* Pyramid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
-		7496502C2760E1BE0061F01C /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		7496502F2760E84A0061F01C /* DecelerationTimingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecelerationTimingParameters.swift; sourceTree = "<group>"; };
 		749650312760E8650061F01C /* TimerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimation.swift; sourceTree = "<group>"; };
 		74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasteljauBezierCurve.swift; sourceTree = "<group>"; };
 		74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionItemView.swift; sourceTree = "<group>"; };
 		74C89233275FE4D90045798E /* Object3DOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionsView.swift; sourceTree = "<group>"; };
 		74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+IsEqual.swift"; sourceTree = "<group>"; };
+		74CDC670279B5B2700D9C747 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
 		74D240A6275A66C600123A52 /* Objects3DDrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects3DDrawingViewController.swift; sourceTree = "<group>"; };
+		74D402C32798AD88002CCFB3 /* Octahedron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Octahedron.swift; sourceTree = "<group>"; };
+		74D402C52798B437002CCFB3 /* Icosahedron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icosahedron.swift; sourceTree = "<group>"; };
 		74D54B332743C04A008D5DC2 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
+		74F14D6C2796B6B3000432B5 /* Tetrahedron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tetrahedron.swift; sourceTree = "<group>"; };
 		74F886E02743D1E600C6CF55 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		74F886E22743D27A00C6CF55 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,7 +175,11 @@
 				749650242760ABFC0061F01C /* Object3D.swift */,
 				7436ED79275CD13C0079D036 /* Cube.swift */,
 				7496502A2760B6BD0061F01C /* Pyramid.swift */,
-				7496502C2760E1BE0061F01C /* Diamond.swift */,
+				74F14D6C2796B6B3000432B5 /* Tetrahedron.swift */,
+				74D402C32798AD88002CCFB3 /* Octahedron.swift */,
+				74D402C52798B437002CCFB3 /* Icosahedron.swift */,
+				740003C82799F8D8000668B3 /* Dodecahedron.swift */,
+				74CDC670279B5B2700D9C747 /* Sphere.swift */,
 			);
 			path = 3DDrawers;
 			sourceTree = "<group>";
@@ -407,6 +419,7 @@
 				742152A72714DB2500802062 /* ShapeFiller.swift in Sources */,
 				74D54B342743C04A008D5DC2 /* DrawingViewController.swift in Sources */,
 				7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */,
+				740003C92799F8D8000668B3 /* Dodecahedron.swift in Sources */,
 				7481000F270B9DD900BAB024 /* EllipseDrawer.swift in Sources */,
 				749650252760ABFC0061F01C /* Object3D.swift in Sources */,
 				742152AB2714E51600802062 /* Stack.swift in Sources */,
@@ -416,9 +429,11 @@
 				749650272760AC0F0061F01C /* Point3D.swift in Sources */,
 				7418039327235F670046F06C /* Board.swift in Sources */,
 				7496502B2760B6BD0061F01C /* Pyramid.swift in Sources */,
+				74CDC671279B5B2700D9C747 /* Sphere.swift in Sources */,
 				74AC8A94274F0DAE0084A48D /* CasteljauBezierCurve.swift in Sources */,
 				749650292760AC320061F01C /* CGPoint+Translated.swift in Sources */,
 				742152A92714DB7600802062 /* PixelDrawer.swift in Sources */,
+				74D402C42798AD88002CCFB3 /* Octahedron.swift in Sources */,
 				749650322760E8650061F01C /* TimerAnimation.swift in Sources */,
 				7464762827253EC70079BAE2 /* Polygon.swift in Sources */,
 				74810013270B9ECE00BAB024 /* DrawingType.swift in Sources */,
@@ -429,7 +444,6 @@
 				74810015270BAF9A00BAB024 /* AboutDeveloperView.swift in Sources */,
 				74810009270B9C3F00BAB024 /* ShapeDrawer.swift in Sources */,
 				74D240A7275A66C600123A52 /* Objects3DDrawingViewController.swift in Sources */,
-				7496502D2760E1BF0061F01C /* Diamond.swift in Sources */,
 				7432D859274E508100D6D4CC /* BezierCurve.swift in Sources */,
 				74F886E32743D27A00C6CF55 /* Rectangle.swift in Sources */,
 				7432D85E274E80A900D6D4CC /* CurveOptionsView.swift in Sources */,
@@ -444,9 +458,11 @@
 				742F0D24270A4E7B002B3F8D /* PrimitivesDrawingViewController.swift in Sources */,
 				7432D857274E4FF500D6D4CC /* CurveDrawer.swift in Sources */,
 				74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */,
+				74F14D6D2796B6B3000432B5 /* Tetrahedron.swift in Sources */,
 				74302BCA2724287B004F24F0 /* PolygonDrawer.swift in Sources */,
 				7432D85C274E7F1200D6D4CC /* CurveOptionItemView.swift in Sources */,
 				7432B706274ED6C00062C794 /* BSplineCurve.swift in Sources */,
+				74D402C62798B437002CCFB3 /* Icosahedron.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

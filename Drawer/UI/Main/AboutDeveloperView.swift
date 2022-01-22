@@ -40,6 +40,11 @@ struct AboutDeveloperView: View {
                     Spacer()
                 }.padding(.leading, 20)
                 HStack {
+                    Text("Task 5:").bold()
+                    Text("Roberts algorithm for removing invisible edges")
+                    Spacer()
+                }.padding(.leading, 20)
+                HStack {
                     Text("IDE:").bold()
                     Text("XCode 13")
                     Spacer()
@@ -51,7 +56,7 @@ struct AboutDeveloperView: View {
                 }.padding(.leading, 20)
                 HStack(alignment: .top) {
                     Text("Program execution:").bold()
-                    Text("Select the tool from the left panel then draw on the right panel.")
+                    Text("Select the tool from the left panel then draw or interact with objects on the right panel.")
                     Spacer()
                 }.padding(.leading, 20)
                 Spacer()

@@ -11,7 +11,8 @@ enum Object3DOptions {
     
     enum Projection: String, CaseIterable {
         case parallel
-        case perspective
+        case perspectiveClose = "perspective (close)"
+        case perspectiveDistant = "perspective (distant)"
     }
     
     enum ScaleAxis: String, CaseIterable {
@@ -26,6 +27,11 @@ enum Object3DOptions {
         case no
     }
     
+    enum ShowEdges: String, CaseIterable {
+        case yes
+        case no
+    }
+    
 }
 
 protocol Object3DOptionsProtocol: UIView {
@@ -33,15 +39,18 @@ protocol Object3DOptionsProtocol: UIView {
     typealias ProjectionCompletion = Completion<Object3DOptions.Projection>
     typealias ScaleAxisCompletion = Completion<Object3DOptions.ScaleAxis>
     typealias DecelerationCompletion = Completion<Object3DOptions.Deceleration>
+    typealias ShowEdgesCompletion = Completion<Object3DOptions.ShowEdges>
     
     var presenter: UIViewController? { set get }
     
     var projection: Object3DOptions.Projection { get }
     var scaleAxis: Object3DOptions.ScaleAxis { get }
     var deceleration: Object3DOptions.Deceleration { get }
+    var edgesState: Object3DOptions.ShowEdges { get }
     
     var projectionDidChange: ProjectionCompletion? { set get }
     var scaleAxisDidChange: ScaleAxisCompletion? { set get }
+    var edgesStateDidChange: ShowEdgesCompletion? { set get }
 }
 
 final class Object3DOptionsView: UIView, Object3DOptionsProtocol {
@@ -49,20 +58,18 @@ final class Object3DOptionsView: UIView, Object3DOptionsProtocol {
     weak var presenter: UIViewController? 
     
     var projection: Object3DOptions.Projection = .parallel
-    
     var scaleAxis: Object3DOptions.ScaleAxis = .object
-    
     var deceleration: Object3DOptions.Deceleration = .no
+    var edgesState: Object3DOptions.ShowEdges = .no
     
     var projectionDidChange: ProjectionCompletion?
-    
     var scaleAxisDidChange: ScaleAxisCompletion?
+    var edgesStateDidChange: ShowEdgesCompletion?
     
     private var projectionView: Object3DOptionItemView!
-    
     private var scaleAxisView: Object3DOptionItemView!
-    
     private var decelerationView: Object3DOptionItemView!
+    private var edgesStateView: Object3DOptionItemView!
     
     init() {
         super.init(frame: .zero)
@@ -106,6 +113,17 @@ final class Object3DOptionsView: UIView, Object3DOptionsProtocol {
             })
             self?.showAlert(actions: actions)
         }
+        
+        edgesStateView = .init(title: "Show edges: \(deceleration.rawValue)") { [weak self] in
+            let actions: [UIAlertAction] = Object3DOptions.ShowEdges.allCases.map({ edgesState in
+                    .init(title: edgesState.rawValue, style: .default) { [weak self] _ in
+                        self?.edgesState = edgesState
+                        self?.edgesStateDidChange?(edgesState)
+                        self?.edgesStateView.setTitle("Apply deceleration: \(edgesState.rawValue)")
+                    }
+            })
+            self?.showAlert(actions: actions)
+        }
     }
     
     private func showAlert(actions: [UIAlertAction]) {
@@ -133,10 +151,14 @@ final class Object3DOptionsView: UIView, Object3DOptionsProtocol {
         scaleAxisView.top(to: projectionView)
         
         addSubview(decelerationView)
-        decelerationView.stickToSuperviewEdges([.left, .right, .bottom])
+        decelerationView.stickToSuperviewEdges([.left, .right])
         decelerationView.top(to: scaleAxisView)
-        decelerationView.layer.cornerRadius = 12
-        decelerationView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
+        addSubview(edgesStateView)
+        edgesStateView.stickToSuperviewEdges([.left, .right, .bottom])
+        edgesStateView.top(to: decelerationView)
+        edgesStateView.layer.cornerRadius = 12
+        edgesStateView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
         width(250)
     }

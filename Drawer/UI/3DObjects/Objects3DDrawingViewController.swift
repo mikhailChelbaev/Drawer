@@ -20,11 +20,13 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     
     // MARK: - drawers
     
-    private var cube: Object3D = Cube(side: 200)
-    
-    private var pyramid: Object3D = Pyramid(side: 200)
-    
-    private var diamond: Object3D = Diamond(side: 200)
+    private var cube: Object3D = Cube()
+    private var pyramid: Object3D = Pyramid()
+    private var tetrahedron: Object3D = Tetrahedron()
+    private var octahedron: Object3D = Octahedron()
+    private var icosahedron: Object3D = Icosahedron()
+    private var dodecahedron: Object3D = Dodecahedron()
+    private var sphere: Object3D = Sphere()
     
     // MARK: - DrawerProvider
     
@@ -164,8 +166,16 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
             currentObject = cube
         case .pyramid:
             currentObject = pyramid
-        case .diamond:
-            currentObject = diamond
+        case .tetrahedron:
+            currentObject = tetrahedron
+        case .octahedron:
+            currentObject = octahedron
+        case .icosahedron:
+            currentObject = icosahedron
+        case .dodecahedron:
+            currentObject = dodecahedron
+        case .sphere:
+            currentObject = sphere
         default:
             currentObject = nil
         }
@@ -185,9 +195,13 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     }
     
     override func clear() {
-        cube = Cube(side: 200)
-        pyramid = Pyramid(side: 200)
-        diamond = Diamond(side: 200)
+        cube = Cube()
+        pyramid = Pyramid()
+        tetrahedron = Tetrahedron()
+        octahedron = Octahedron()
+        icosahedron = Icosahedron()
+        dodecahedron = Dodecahedron()
+        sphere = Sphere()
         
         updateCurrentObject()
         currentObject?.projection = optionsView.projection
