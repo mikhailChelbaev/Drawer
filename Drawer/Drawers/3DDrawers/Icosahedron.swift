@@ -10,7 +10,7 @@ import simd
 
 final class Icosahedron: Object3D {
     
-    init(radius: Float = 100) {
+    init(radius: Float = 200) {
         super.init()
         
         // create vertices
@@ -35,9 +35,9 @@ final class Icosahedron: Object3D {
         for i in 0 ..< 10 {
             sideIndexes.append([i, (i + 1) % 10, (i + 2) % 10])
             if i % 2 == 0 {
-                sideIndexes.append([i, i + 2, 10])
+                sideIndexes.append([i, (i + 2) % 10, 10])
             } else {
-                sideIndexes.append([i, i + 2, 11])
+                sideIndexes.append([i, (i + 2) % 10, 11])
             }
         }
         

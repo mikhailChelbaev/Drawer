@@ -11,16 +11,21 @@ import simd
 class Object3D {
     
     private let closePerspectiveProjectionMatrix: float4x4
-    
     private let distantPerspectiveProjectionMatrix: float4x4
     
     private let lineDrawer: LineDrawer = .init()
     
     var sides: [[Point3D]] = []
+    var center: Point3D
     
     var projection: Object3DOptions.Projection = .parallel
     
+    var sideVisibility: SideVisibility = RobertsAlgorithm()
+    var showInvisibleSides: Bool = false
+    
     init() {
+        center = .init(0, 0, 0, 0)
+        
         closePerspectiveProjectionMatrix = .init(rows: [
             Point3D(x: 1, y: 0, z: 0, w: 0),
             Point3D(x: 0, y: 1, z: 0, w: 0),
@@ -48,7 +53,13 @@ class Object3D {
             shape = normalized(matrix: shape)
         }
         
+        updateCenter()
+        
         for side in shape {
+            if !showInvisibleSides && !sideVisibility.isSideVisible(innerPoint: center, observerPoint: .init(0, 0, Float.greatestFiniteMagnitude, 0), side: side) {
+                continue
+            }
+            
             for i in 0 ..< side.count - 1 {
                 connectPoints(p1: side[i], p2: side[i + 1], context: context, board: board)
             }
@@ -59,14 +70,19 @@ class Object3D {
     }
     
     private func connectPoints(p1: Point3D, p2: Point3D, context: CGContext, board: Board) {
-        lineDrawer.drawCustom(
+        lineDrawer.systemDraw(
             from: p1.toPoint2D()
                 .translated(tx: CGFloat(board.width / 2), ty: CGFloat(board.height / 2)),
             to: p2.toPoint2D()
                 .translated(tx: CGFloat(board.width / 2), ty: CGFloat(board.height / 2)),
-            context: context,
-            board: board
+            context: context
         )
+    }
+    
+    private func updateCenter() {
+        var vertices: Set<Point3D> = .init()
+        sides.forEach({ row in row.forEach({ vertices.insert($0) }) })
+        center = Array(vertices).mean()
     }
     
     func translate(tx: Float, ty: Float, context: CGContext, board: Board) {
@@ -76,6 +92,10 @@ class Object3D {
             Point3D(x: 0, y: 0, z: 1, w: 0),
             Point3D(x: Float(tx), y: Float(ty), z: Float(1), w: 1)
         ])
+        
+        center.x += tx
+        center.y += ty
+        
         sides = sides.transform({ $0 * translationMatrix })
         draw(context: context, board: board)
     }
@@ -130,10 +150,4 @@ class Object3D {
         }
     }
     
-}
-
-extension Array where Element == [Point3D] {
-    func transform(_ closure: (Point3D) -> Point3D) -> [[Point3D]] {
-        return self.map({ $0.map({ closure($0) }) })
-    }
 }

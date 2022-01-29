@@ -114,12 +114,12 @@ final class Object3DOptionsView: UIView, Object3DOptionsProtocol {
             self?.showAlert(actions: actions)
         }
         
-        edgesStateView = .init(title: "Show edges: \(deceleration.rawValue)") { [weak self] in
+        edgesStateView = .init(title: "Show all edges: \(deceleration.rawValue)") { [weak self] in
             let actions: [UIAlertAction] = Object3DOptions.ShowEdges.allCases.map({ edgesState in
                     .init(title: edgesState.rawValue, style: .default) { [weak self] _ in
                         self?.edgesState = edgesState
                         self?.edgesStateDidChange?(edgesState)
-                        self?.edgesStateView.setTitle("Apply deceleration: \(edgesState.rawValue)")
+                        self?.edgesStateView.setTitle("Show all edges: \(edgesState.rawValue)")
                     }
             })
             self?.showAlert(actions: actions)

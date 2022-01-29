@@ -20,6 +20,11 @@ final class LineDrawer: ShapeDrawer {
         drawLine(from: p1, to: p2, context: context, board: board, onlyOnBoard: false)
     }
     
+    func systemDraw(from p1: CGPoint, to p2: CGPoint, context: CGContext) {
+        context.move(to: p1)
+        context.addLine(to: p2)        
+    }
+    
     @discardableResult
     func drawLine(from p1: CGPoint, to p2: CGPoint, context: CGContext, board: Board, onlyOnBoard: Bool) -> [CGPoint] {
         var points: [CGPoint] = []

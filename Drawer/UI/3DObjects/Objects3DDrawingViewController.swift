@@ -20,13 +20,13 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     
     // MARK: - drawers
     
-    private var cube: Object3D = Cube()
-    private var pyramid: Object3D = Pyramid()
-    private var tetrahedron: Object3D = Tetrahedron()
-    private var octahedron: Object3D = Octahedron()
-    private var icosahedron: Object3D = Icosahedron()
-    private var dodecahedron: Object3D = Dodecahedron()
-    private var sphere: Object3D = Sphere()
+    private lazy var cube: Object3D = Cube()
+    private lazy var pyramid: Object3D = Pyramid()
+    private lazy var tetrahedron         : Object3D = Tetrahedron()
+    private lazy var octahedron: Object3D = Octahedron()
+    private lazy var icosahedron: Object3D = Icosahedron()
+    private lazy var dodecahedron: Object3D = Dodecahedron()
+    private lazy var sphere: Object3D = Sphere()
     
     // MARK: - DrawerProvider
     
@@ -57,12 +57,12 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     private var isOptionButtonPressed: Bool = false
     
     private var previousPoint: CGPoint = .zero
-    
     private var previousAngle: CGFloat = .zero
-    
     private var previousScale: CGFloat = 1
     
     private var rotationAnimation: TimerAnimation?
+    
+    private lazy var mirror: Mirror = Mirror(reflecting: self)
     
     // MARK: - set up
     
@@ -104,6 +104,23 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
         optionsView.projectionDidChange = { [weak self] newValue in
             guard let self = self else { return }
             self.currentObject?.projection = newValue
+            self.redraw { context in
+                self.currentObject?.draw(context: context, board: self.board)
+            }
+        }
+        optionsView.edgesStateDidChange = { [weak self] newValue in
+            guard let self = self else { return }
+            self.mirror.children.forEach { child in
+                if let object = child.value as? Object3D {
+                    switch newValue {
+                    case .yes:
+                        object.showInvisibleSides = true
+                        
+                    case .no:
+                        object.showInvisibleSides = false
+                    }
+                }
+            }
             self.redraw { context in
                 self.currentObject?.draw(context: context, board: self.board)
             }
@@ -220,8 +237,8 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     }
     
     private func rotate(from p1: CGPoint, to p2: CGPoint) {
-        let dx: CGFloat = p2.y - p1.y
-        let dy: CGFloat = p1.x - p2.x
+        let dx: CGFloat = p1.y - p2.y
+        let dy: CGFloat = p2.x - p1.x
         let dz: CGFloat = 0
         let degree = Float.pi / 180
         
@@ -232,6 +249,15 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
                               context: context,
                               board: board)
         }
+        
+//        imageView.image = nil
+//        backgroundImageDrawing { context in
+//            self.currentObject?.rotate(alpha: Float(dx) * degree,
+//                                       theta: Float(dy) * degree,
+//                                       phi: Float(dz),
+//                                       context: context,
+//                                       board: self.board)
+//        }
     }
     
     private func rotate(dz: CGFloat) {

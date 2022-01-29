@@ -10,7 +10,7 @@ import simd
 
 final class Octahedron: Object3D {
     
-    init(side: Float = 200) {
+    init(side: Float = 300) {
         super.init()
         
         let a = side / 2
@@ -32,9 +32,7 @@ final class Octahedron: Object3D {
             [5, 1, 2],
             [5, 2, 3],
             [5, 3, 4],
-            [5, 1, 4],
-            [1, 2, 4],
-            [2, 3, 4]
+            [5, 1, 4]
         ]
         sides = sideIndexes.map({ innerArray in innerArray.map({ vertices[$0] }) })
     }

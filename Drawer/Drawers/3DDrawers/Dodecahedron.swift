@@ -10,10 +10,9 @@ import simd
 
 final class Dodecahedron: Object3D {
     
-    init(radius: Float = 100) {
+    init(radius: Float = 250) {
         super.init()
         
-        let radius = radius * 1.3
         // create vertices
         var icosahedronVertices: [Point3D] = []
         
@@ -48,6 +47,9 @@ final class Dodecahedron: Object3D {
                                                 icosahedronVertices[11]]))
             }
         }
+        let dodecahedronVertices: [Point3D] = [dodecahedronTop, dodecahedronSide, dodecahedronBottom].reduce([], { $1 + $0 })
+        center = dodecahedronVertices.mean()
+        
         
         // create sides
         func createAndAddTriangles(_ points: [Point3D]) {
@@ -82,11 +84,7 @@ final class Dodecahedron: Object3D {
     }
     
     private func mean(_ points: [Point3D]) -> Point3D {
-        let size = Float(points.count)
-        return Point3D(x: points.reduce(0) { $0 + $1.x } / size,
-                       y: points.reduce(0) { $0 + $1.y } / size,
-                       z: points.reduce(0) { $0 + $1.z } / size,
-                       w: 1)
+        return points.mean()
     }
     
 }

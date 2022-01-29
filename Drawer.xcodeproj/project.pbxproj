@@ -45,6 +45,10 @@
 		7496502B2760B6BD0061F01C /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502A2760B6BD0061F01C /* Pyramid.swift */; };
 		749650302760E84A0061F01C /* DecelerationTimingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496502F2760E84A0061F01C /* DecelerationTimingParameters.swift */; };
 		749650322760E8650061F01C /* TimerAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749650312760E8650061F01C /* TimerAnimation.swift */; };
+		749B2781279CB3FC00C4534D /* Array+Point3DMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B2780279CB3FC00C4534D /* Array+Point3DMean.swift */; };
+		749B2784279CB4B700C4534D /* SideVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B2783279CB4B700C4534D /* SideVisibility.swift */; };
+		749B2786279CB4C900C4534D /* RobertsAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B2785279CB4C900C4534D /* RobertsAlgorithm.swift */; };
+		749B2789279CB71000C4534D /* Array+Point3DTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B2788279CB71000C4534D /* Array+Point3DTransform.swift */; };
 		74AC8A94274F0DAE0084A48D /* CasteljauBezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */; };
 		74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */; };
 		74C89234275FE4D90045798E /* Object3DOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89233275FE4D90045798E /* Object3DOptionsView.swift */; };
@@ -101,6 +105,10 @@
 		7496502A2760B6BD0061F01C /* Pyramid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
 		7496502F2760E84A0061F01C /* DecelerationTimingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecelerationTimingParameters.swift; sourceTree = "<group>"; };
 		749650312760E8650061F01C /* TimerAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimation.swift; sourceTree = "<group>"; };
+		749B2780279CB3FC00C4534D /* Array+Point3DMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Point3DMean.swift"; sourceTree = "<group>"; };
+		749B2783279CB4B700C4534D /* SideVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideVisibility.swift; sourceTree = "<group>"; };
+		749B2785279CB4C900C4534D /* RobertsAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertsAlgorithm.swift; sourceTree = "<group>"; };
+		749B2788279CB71000C4534D /* Array+Point3DTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Point3DTransform.swift"; sourceTree = "<group>"; };
 		74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasteljauBezierCurve.swift; sourceTree = "<group>"; };
 		74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionItemView.swift; sourceTree = "<group>"; };
 		74C89233275FE4D90045798E /* Object3DOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionsView.swift; sourceTree = "<group>"; };
@@ -254,6 +262,8 @@
 		7474ED2E2709C864004E8B95 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				749B2787279CB6F400C4534D /* Array */,
+				749B2782279CB4A900C4534D /* SideVisibility */,
 				7474ED2F2709C88E004E8B95 /* UIView+Layout.swift */,
 				742152AA2714E51600802062 /* Stack.swift */,
 				7418039227235F670046F06C /* Board.swift */,
@@ -306,6 +316,24 @@
 				749650312760E8650061F01C /* TimerAnimation.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		749B2782279CB4A900C4534D /* SideVisibility */ = {
+			isa = PBXGroup;
+			children = (
+				749B2783279CB4B700C4534D /* SideVisibility.swift */,
+				749B2785279CB4C900C4534D /* RobertsAlgorithm.swift */,
+			);
+			path = SideVisibility;
+			sourceTree = "<group>";
+		};
+		749B2787279CB6F400C4534D /* Array */ = {
+			isa = PBXGroup;
+			children = (
+				749B2780279CB3FC00C4534D /* Array+Point3DMean.swift */,
+				749B2788279CB71000C4534D /* Array+Point3DTransform.swift */,
+			);
+			path = Array;
 			sourceTree = "<group>";
 		};
 		74C89230275FE48B0045798E /* Views */ = {
@@ -421,6 +449,7 @@
 				7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */,
 				740003C92799F8D8000668B3 /* Dodecahedron.swift in Sources */,
 				7481000F270B9DD900BAB024 /* EllipseDrawer.swift in Sources */,
+				749B2784279CB4B700C4534D /* SideVisibility.swift in Sources */,
 				749650252760ABFC0061F01C /* Object3D.swift in Sources */,
 				742152AB2714E51600802062 /* Stack.swift in Sources */,
 				749650302760E84A0061F01C /* DecelerationTimingParameters.swift in Sources */,
@@ -444,6 +473,7 @@
 				74810015270BAF9A00BAB024 /* AboutDeveloperView.swift in Sources */,
 				74810009270B9C3F00BAB024 /* ShapeDrawer.swift in Sources */,
 				74D240A7275A66C600123A52 /* Objects3DDrawingViewController.swift in Sources */,
+				749B2789279CB71000C4534D /* Array+Point3DTransform.swift in Sources */,
 				7432D859274E508100D6D4CC /* BezierCurve.swift in Sources */,
 				74F886E32743D27A00C6CF55 /* Rectangle.swift in Sources */,
 				7432D85E274E80A900D6D4CC /* CurveOptionsView.swift in Sources */,
@@ -458,10 +488,12 @@
 				742F0D24270A4E7B002B3F8D /* PrimitivesDrawingViewController.swift in Sources */,
 				7432D857274E4FF500D6D4CC /* CurveDrawer.swift in Sources */,
 				74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */,
+				749B2786279CB4C900C4534D /* RobertsAlgorithm.swift in Sources */,
 				74F14D6D2796B6B3000432B5 /* Tetrahedron.swift in Sources */,
 				74302BCA2724287B004F24F0 /* PolygonDrawer.swift in Sources */,
 				7432D85C274E7F1200D6D4CC /* CurveOptionItemView.swift in Sources */,
 				7432B706274ED6C00062C794 /* BSplineCurve.swift in Sources */,
+				749B2781279CB3FC00C4534D /* Array+Point3DMean.swift in Sources */,
 				74D402C62798B437002CCFB3 /* Icosahedron.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
