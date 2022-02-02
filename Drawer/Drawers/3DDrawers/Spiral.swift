@@ -1,17 +1,19 @@
 //
-//  Sphere.swift
+//  Spiral.swift
 //  Drawer
 //
-//  Created by Mikhail on 22.01.2022.
+//  Created by Mikhail on 02.02.2022.
 //
 
 import UIKit
 import simd
 
-final class Sphere: Object3D {
+final class Spiral: Object3D {
     
-    init(radius: Float = 200) {
+    init(r1: Float = 50, r2: Float = 50, num: Int = 2) {
         super.init()
+        
+        allowHideInvisibleSides = false
         
         // create vertices
         var vertices: [[Point3D]] = []
@@ -20,16 +22,18 @@ final class Sphere: Object3D {
         let step: Int = 10
         let floatStep: Float = Float(step) // optimisation purpose
         var a: Float, b: Float
+        let k: Float = Float(step * 3)
         
-        for i in stride(from: 0, through: step + 1, by: 1) {
+        for i in stride(from: 0, through: (step + 1) * num, by: 1) {
             vertices.append([])
-            for j in stride(from: 0, through: step, by: 1) {
-                a = Float.pi / floatStep * Float(i)
+            for j in stride(from: 0, through: step * num, by: 1) {
+                a = 2 * Float.pi / floatStep * Float(i)
                 b = 2 * Float.pi / floatStep * Float(j)
                 
-                x = radius * sin(a) * cos(b)
-                y = radius * sin(a) * sin(b)
-                z = radius * cos(a)
+                x = (r1 + k * b + r2 * cos(a)) * cos(b)
+                y = (r1 + k * b + r2 * cos(a)) * sin(b)
+                z = r2 * sin(a)
+                
                 vertices[i].append(Point3D(x: x, y: y, z: z, w: 1))
                 
                 if i > 0 && j > 0 {

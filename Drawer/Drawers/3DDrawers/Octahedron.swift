@@ -15,7 +15,7 @@ final class Octahedron: Object3D {
         
         let a = side / 2
         
-        let vertices = [
+        vertices = [
             Point3D(x: 0, y: 0, z: a, w: 1),
             Point3D(x: a, y: 0, z: 0, w: 1),
             Point3D(x: 0, y: a, z: 0, w: 1),
@@ -35,6 +35,7 @@ final class Octahedron: Object3D {
             [5, 1, 4]
         ]
         sides = sideIndexes.map({ innerArray in innerArray.map({ vertices[$0] }) })
+        verticesIndexes = sideIndexes
     }
     
 }

@@ -1,17 +1,19 @@
 //
-//  Sphere.swift
+//  Torus.swift
 //  Drawer
 //
-//  Created by Mikhail on 22.01.2022.
+//  Created by Mikhail on 01.02.2022.
 //
 
 import UIKit
 import simd
 
-final class Sphere: Object3D {
+final class Torus: Object3D {
     
-    init(radius: Float = 200) {
+    init(r1: Float = 200, r2: Float = 50) {
         super.init()
+        
+        allowHideInvisibleSides = false
         
         // create vertices
         var vertices: [[Point3D]] = []
@@ -24,12 +26,12 @@ final class Sphere: Object3D {
         for i in stride(from: 0, through: step + 1, by: 1) {
             vertices.append([])
             for j in stride(from: 0, through: step, by: 1) {
-                a = Float.pi / floatStep * Float(i)
+                a = 2 * Float.pi / floatStep * Float(i)
                 b = 2 * Float.pi / floatStep * Float(j)
                 
-                x = radius * sin(a) * cos(b)
-                y = radius * sin(a) * sin(b)
-                z = radius * cos(a)
+                x = (r1 + r2 * cos(a)) * cos(b)
+                y = (r1 + r2 * cos(a)) * sin(b)
+                z = r2 * sin(a)
                 vertices[i].append(Point3D(x: x, y: y, z: z, w: 1))
                 
                 if i > 0 && j > 0 {
@@ -49,3 +51,4 @@ final class Sphere: Object3D {
     }
     
 }
+

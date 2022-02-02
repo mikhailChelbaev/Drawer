@@ -32,6 +32,10 @@ enum DrawingType {
     case icosahedron
     case dodecahedron
     case sphere
+    case torus
+    case spring
+    case spiral
+    case fruit
     
     var pretty: String {
         switch self {
@@ -73,6 +77,14 @@ enum DrawingType {
             return "Dodecahedron"
         case .sphere:
             return "Sphere"
+        case .torus:
+            return "Torus"
+        case .spring:
+            return "Spring"
+        case .spiral:
+            return "Spiral"
+        case .fruit:
+            return "Fruit"
         }
     }
     
@@ -116,6 +128,14 @@ enum DrawingType {
             return UIImage(systemName: "octagon")
         case .sphere:
             return UIImage(systemName: "circle")
+        case .torus:
+            return UIImage(systemName: "torus")
+        case .spring:
+            return UIImage(systemName: "circle.circle")
+        case .spiral:
+            return UIImage(systemName: "line.3.crossed.swirl.circle")
+        case .fruit:
+            return UIImage(systemName: "oval")
         }
     }
 }

@@ -48,7 +48,6 @@ final class Dodecahedron: Object3D {
             }
         }
         let dodecahedronVertices: [Point3D] = [dodecahedronTop, dodecahedronSide, dodecahedronBottom].reduce([], { $1 + $0 })
-        center = dodecahedronVertices.mean()
         
         
         // create sides
@@ -61,6 +60,7 @@ final class Dodecahedron: Object3D {
         
         sides = []
         var currentPoints: [Point3D]
+        verticesIndexes = []
         for i in 0 ..< 10 {
             if i % 2 == 0 {
                 currentPoints = [dodecahedronSide[i],
@@ -76,11 +76,14 @@ final class Dodecahedron: Object3D {
                                  dodecahedronBottom[(i / 2) % 5]]
             }
             
+            verticesIndexes.append([i, (i + 1) % 10, (i + 2) % 10, (i / 2 + 1) % 5, (i / 2) % 5])
             createAndAddTriangles(currentPoints)
         }
         
         createAndAddTriangles(dodecahedronTop)
         createAndAddTriangles(dodecahedronBottom)
+        
+        vertices = dodecahedronVertices
     }
     
     private func mean(_ points: [Point3D]) -> Point3D {

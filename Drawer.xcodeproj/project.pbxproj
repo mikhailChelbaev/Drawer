@@ -32,6 +32,10 @@
 		7474ED232709C7C0004E8B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7474ED222709C7C0004E8B95 /* Assets.xcassets */; };
 		7474ED262709C7C0004E8B95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7474ED242709C7C0004E8B95 /* LaunchScreen.storyboard */; };
 		7474ED302709C88E004E8B95 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7474ED2F2709C88E004E8B95 /* UIView+Layout.swift */; };
+		747CB59427A9BCA000EDB794 /* Torus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747CB59327A9BCA000EDB794 /* Torus.swift */; };
+		747CB59627A9BE8E00EDB794 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747CB59527A9BE8E00EDB794 /* Spring.swift */; };
+		747CB59827A9DB6900EDB794 /* Spiral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747CB59727A9DB6900EDB794 /* Spiral.swift */; };
+		747CB59A27AAB33300EDB794 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747CB59927AAB33300EDB794 /* Fruit.swift */; };
 		74810009270B9C3F00BAB024 /* ShapeDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74810008270B9C3F00BAB024 /* ShapeDrawer.swift */; };
 		7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481000A270B9C7700BAB024 /* LineDrawer.swift */; };
 		7481000D270B9DA100BAB024 /* CircleDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481000C270B9DA100BAB024 /* CircleDrawer.swift */; };
@@ -92,6 +96,10 @@
 		7474ED272709C7C0004E8B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7474ED2D2709C7D7004E8B95 /* Drawer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Drawer.entitlements; sourceTree = "<group>"; };
 		7474ED2F2709C88E004E8B95 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		747CB59327A9BCA000EDB794 /* Torus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Torus.swift; sourceTree = "<group>"; };
+		747CB59527A9BE8E00EDB794 /* Spring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+		747CB59727A9DB6900EDB794 /* Spiral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spiral.swift; sourceTree = "<group>"; };
+		747CB59927AAB33300EDB794 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 		74810008270B9C3F00BAB024 /* ShapeDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDrawer.swift; sourceTree = "<group>"; };
 		7481000A270B9C7700BAB024 /* LineDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDrawer.swift; sourceTree = "<group>"; };
 		7481000C270B9DA100BAB024 /* CircleDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDrawer.swift; sourceTree = "<group>"; };
@@ -188,6 +196,10 @@
 				74D402C52798B437002CCFB3 /* Icosahedron.swift */,
 				740003C82799F8D8000668B3 /* Dodecahedron.swift */,
 				74CDC670279B5B2700D9C747 /* Sphere.swift */,
+				747CB59327A9BCA000EDB794 /* Torus.swift */,
+				747CB59527A9BE8E00EDB794 /* Spring.swift */,
+				747CB59727A9DB6900EDB794 /* Spiral.swift */,
+				747CB59927AAB33300EDB794 /* Fruit.swift */,
 			);
 			path = 3DDrawers;
 			sourceTree = "<group>";
@@ -449,6 +461,7 @@
 				7481000B270B9C7700BAB024 /* LineDrawer.swift in Sources */,
 				740003C92799F8D8000668B3 /* Dodecahedron.swift in Sources */,
 				7481000F270B9DD900BAB024 /* EllipseDrawer.swift in Sources */,
+				747CB59827A9DB6900EDB794 /* Spiral.swift in Sources */,
 				749B2784279CB4B700C4534D /* SideVisibility.swift in Sources */,
 				749650252760ABFC0061F01C /* Object3D.swift in Sources */,
 				742152AB2714E51600802062 /* Stack.swift in Sources */,
@@ -465,8 +478,10 @@
 				74D402C42798AD88002CCFB3 /* Octahedron.swift in Sources */,
 				749650322760E8650061F01C /* TimerAnimation.swift in Sources */,
 				7464762827253EC70079BAE2 /* Polygon.swift in Sources */,
+				747CB59427A9BCA000EDB794 /* Torus.swift in Sources */,
 				74810013270B9ECE00BAB024 /* DrawingType.swift in Sources */,
 				7474ED302709C88E004E8B95 /* UIView+Layout.swift in Sources */,
+				747CB59A27AAB33300EDB794 /* Fruit.swift in Sources */,
 				7474ED1E2709C7BE004E8B95 /* DrawSettingsViewController.swift in Sources */,
 				7454FB0F274D6DEA00F17547 /* CurvesDrawingViewController.swift in Sources */,
 				7454FB0D274D6D6600F17547 /* SelectDrawingViewController.swift in Sources */,
@@ -486,6 +501,7 @@
 				74810011270B9EB700BAB024 /* SectionDataSource.swift in Sources */,
 				74F886E12743D1E600C6CF55 /* Line.swift in Sources */,
 				742F0D24270A4E7B002B3F8D /* PrimitivesDrawingViewController.swift in Sources */,
+				747CB59627A9BE8E00EDB794 /* Spring.swift in Sources */,
 				7432D857274E4FF500D6D4CC /* CurveDrawer.swift in Sources */,
 				74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */,
 				749B2786279CB4C900C4534D /* RobertsAlgorithm.swift in Sources */,

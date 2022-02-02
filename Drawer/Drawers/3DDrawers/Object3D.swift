@@ -8,6 +8,10 @@
 import UIKit
 import simd
 
+protocol Exportable {
+    func export() -> Data?
+}
+
 class Object3D {
     
     private let closePerspectiveProjectionMatrix: float4x4
@@ -16,12 +20,15 @@ class Object3D {
     private let lineDrawer: LineDrawer = .init()
     
     var sides: [[Point3D]] = []
+    var vertices: [Point3D] = []
+    var verticesIndexes: [[Int]] = []
     var center: Point3D
     
     var projection: Object3DOptions.Projection = .parallel
     
-    var sideVisibility: SideVisibility = RobertsAlgorithm()
+    var sideVisibility: SideVisibility = RobertsAlgorithm2()
     var showInvisibleSides: Bool = false
+    var allowHideInvisibleSides: Bool = true
     
     init() {
         center = .init(0, 0, 0, 0)
@@ -42,21 +49,27 @@ class Object3D {
     
     func draw(context: CGContext, board: Board) {
         var shape: [[Point3D]]
+        let observerPoint: Point3D = .init(0, 0, Float.greatestFiniteMagnitude, 1)
+        
         switch projection {
         case .parallel:
             shape = sides
+            
         case .perspectiveClose:
             shape = sides.transform({ $0 * closePerspectiveProjectionMatrix })
             shape = normalized(matrix: shape)
+            
         case .perspectiveDistant:
             shape = sides.transform({ $0 * distantPerspectiveProjectionMatrix })
             shape = normalized(matrix: shape)
         }
         
-        updateCenter()
+        updateCenter(sides: shape)
         
         for side in shape {
-            if !showInvisibleSides && !sideVisibility.isSideVisible(innerPoint: center, observerPoint: .init(0, 0, Float.greatestFiniteMagnitude, 0), side: side) {
+            if !showInvisibleSides &&
+                allowHideInvisibleSides &&
+                !sideVisibility.isSideVisible(innerPoint: center, observerPoint: observerPoint, side: side) {
                 continue
             }
             
@@ -69,7 +82,10 @@ class Object3D {
         }
     }
     
-    private func connectPoints(p1: Point3D, p2: Point3D, context: CGContext, board: Board) {
+    private func connectPoints(p1: Point3D,
+                               p2: Point3D,
+                               context: CGContext,
+                               board: Board) {
         lineDrawer.systemDraw(
             from: p1.toPoint2D()
                 .translated(tx: CGFloat(board.width / 2), ty: CGFloat(board.height / 2)),
@@ -79,11 +95,13 @@ class Object3D {
         )
     }
     
-    private func updateCenter() {
+    private func updateCenter(sides: [[Point3D]]) {
         var vertices: Set<Point3D> = .init()
         sides.forEach({ row in row.forEach({ vertices.insert($0) }) })
         center = Array(vertices).mean()
     }
+    
+    // MARK: - Object manipulations
     
     func translate(tx: Float, ty: Float, context: CGContext, board: Board) {
         let translationMatrix: float4x4 = .init(rows: [
@@ -97,6 +115,8 @@ class Object3D {
         center.y += ty
         
         sides = sides.transform({ $0 * translationMatrix })
+        vertices = vertices.transform({ $0 * translationMatrix })
+        
         draw(context: context, board: board)
     }
     
@@ -119,7 +139,10 @@ class Object3D {
             Point3D(x: 0, y: 0, z: 1, w: 0),
             Point3D(x: 0, y: 0, z: 0, w: 1)
         ])
+        
         sides = sides.transform({ $0 * xRotationMatrix * yRotationMatrix * zRotationMatrix })
+        vertices = vertices.transform({ $0 * xRotationMatrix * yRotationMatrix * zRotationMatrix })
+        
         draw(context: context, board: board)
     }
     
@@ -130,24 +153,59 @@ class Object3D {
             Point3D(x: 0, y: 0, z: Float(z), w: 0),
             Point3D(x: 0, y: 0, z: 0, w: Float(h))
         ])
-        sides = sides.transform({ $0 * scaleMatrix })
         
+        sides = sides.transform({ $0 * scaleMatrix })
         sides = normalized(matrix: sides)
+        
+        vertices = vertices.transform({ $0 * scaleMatrix })
+        vertices = normalized(matrix: vertices)
         
         draw(context: context, board: board)
     }
     
+    // MARK: - normalize
+    
     private func normalized(matrix: [[Point3D]]) -> [[Point3D]] {
         matrix.map { matrix in
-            var result = matrix
-            for index in matrix.indices {
-                result[index].x /= matrix[index].w
-                result[index].y /= matrix[index].w
-                result[index].z /= matrix[index].w
-                result[index].w = 1
-            }
-            return result
+            normalized(matrix: matrix)
         }
     }
     
+    private func normalized(matrix: [Point3D]) -> [Point3D] {
+        var result = matrix
+        for index in matrix.indices {
+            result[index] = normalized(point: matrix[index])
+        }
+        return result
+    }
+    
+    private func normalized(point: Point3D) -> Point3D {
+        var result = point
+        result.x /= point.w
+        result.y /= point.w
+        result.z /= point.w
+        result.w = 1
+        return result
+    }
+    
+}
+
+// MARK: - protocol Exportable
+
+extension Object3D: Exportable {
+    func export() -> Data? {
+        var data: String = ""
+        
+        data += "\(vertices.count)\n"
+        for vertex in vertices {
+            data += "\(vertex[0]), \(vertex[1]), \(vertex[2])\n"
+        }
+        
+        data += "\(verticesIndexes.count)\n"
+        for index in verticesIndexes {
+            data += "\(index[0]), \(index[1]), \(index[2])\n"
+        }
+        
+        return data.data(using: .utf8)
+    }
 }

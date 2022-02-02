@@ -1,17 +1,19 @@
 //
-//  Sphere.swift
+//  Fruit.swift
 //  Drawer
 //
-//  Created by Mikhail on 22.01.2022.
+//  Created by Mikhail on 02.02.2022.
 //
 
 import UIKit
 import simd
 
-final class Sphere: Object3D {
+final class Fruit: Object3D {
     
     init(radius: Float = 200) {
         super.init()
+        
+        allowHideInvisibleSides = false
         
         // create vertices
         var vertices: [[Point3D]] = []
@@ -27,9 +29,9 @@ final class Sphere: Object3D {
                 a = Float.pi / floatStep * Float(i)
                 b = 2 * Float.pi / floatStep * Float(j)
                 
-                x = radius * sin(a) * cos(b)
-                y = radius * sin(a) * sin(b)
-                z = radius * cos(a)
+                x = radius * sin(a) * cos(b) * (1 + 0.5 * abs(sin(2 * a)))
+                y = radius * cos(a) * cos(b) * (1 + 0.5 * abs(sin(2 * a)))
+                z = radius * sin(b)
                 vertices[i].append(Point3D(x: x, y: y, z: z, w: 1))
                 
                 if i > 0 && j > 0 {
@@ -49,3 +51,5 @@ final class Sphere: Object3D {
     }
     
 }
+
+

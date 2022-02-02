@@ -16,7 +16,7 @@ final class Pyramid: Object3D {
         let m = a / (sqrt(2) * 2)
         let s = a / 2
         
-        let vertices = [
+        vertices = [
             Point3D(x: 0, y: 0, z: m, w: 1),
             Point3D(x: s, y: s, z: -m, w: 1),
             Point3D(x: -s, y: s, z: -m, w: 1),
@@ -33,6 +33,7 @@ final class Pyramid: Object3D {
             [0, 1, 4]
         ]
         sides = sideIndexes.map({ innerArray in innerArray.map({ vertices[$0] }) })
+        verticesIndexes = sideIndexes
     }
     
 }

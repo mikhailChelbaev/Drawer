@@ -81,7 +81,7 @@ extension DrawSettingsViewController: UITableViewDelegate {
             provider?.type = drawingType
         case .bezier, .spline, .casteljauBezier: // curves
             provider?.type = drawingType
-        case .cube, .pyramid, .tetrahedron, .octahedron, .icosahedron, .dodecahedron, .sphere: // 3D
+        case .cube, .pyramid, .tetrahedron, .octahedron, .icosahedron, .dodecahedron, .sphere, .torus, .spring, .spiral, .fruit: // 3D
             provider?.type = drawingType
         case .clipping:
             let controller = ClippingViewController()

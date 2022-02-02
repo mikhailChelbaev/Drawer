@@ -14,7 +14,7 @@ final class Icosahedron: Object3D {
         super.init()
         
         // create vertices
-        var vertices: [Point3D] = []
+        vertices = []
         
         var angle: Float
         for i in 0 ..< 10 {
@@ -31,7 +31,6 @@ final class Icosahedron: Object3D {
         // create triangles
         var sideIndexes: [[Int]] = []
         
-        
         for i in 0 ..< 10 {
             sideIndexes.append([i, (i + 1) % 10, (i + 2) % 10])
             if i % 2 == 0 {
@@ -42,6 +41,7 @@ final class Icosahedron: Object3D {
         }
         
         sides = sideIndexes.map({ innerArray in innerArray.map({ vertices[$0] }) })
+        verticesIndexes = sideIndexes
     }
     
 }

@@ -13,7 +13,7 @@ final class Cube: Object3D {
     init(side: Float = 200) {
         super.init()
         
-        var vertices: [Point3D] = []
+        vertices = []
         let half = side / 2
         for i in 0 ..< 8 {
             vertices.append(.init(x: Float(i & 0x01) * side - half,
@@ -37,6 +37,7 @@ final class Cube: Object3D {
             [5, 6, 7]
         ]
         sides = sideIndexes.map({ innerArray in innerArray.map({ vertices[$0] }) })
+        verticesIndexes = sideIndexes
     }
     
 }

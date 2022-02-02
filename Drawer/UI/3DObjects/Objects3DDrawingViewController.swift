@@ -22,11 +22,15 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     
     private lazy var cube: Object3D = Cube()
     private lazy var pyramid: Object3D = Pyramid()
-    private lazy var tetrahedron         : Object3D = Tetrahedron()
+    private lazy var tetrahedron: Object3D = Tetrahedron()
     private lazy var octahedron: Object3D = Octahedron()
     private lazy var icosahedron: Object3D = Icosahedron()
     private lazy var dodecahedron: Object3D = Dodecahedron()
     private lazy var sphere: Object3D = Sphere()
+    private lazy var torus: Object3D = Torus()
+    private lazy var spring: Object3D = Spring()
+    private lazy var spiral: Object3D = Spiral()
+    private lazy var fruit: Object3D = Fruit()
     
     // MARK: - DrawerProvider
     
@@ -46,11 +50,21 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
         }
     }
     
+    // MARK: - UI
+    
+    private let optionsView: Object3DOptionsProtocol = Object3DOptionsView()
+    
+    private let exportButton: UIButton = {
+        let config: UIButton.Configuration = .filled()
+        let button = UIButton()
+        button.configuration = config
+        button.setTitle("Export object", for: .normal)
+        return button
+    }()
+    
     // MARK: - other properties
     
     private lazy var currentObject: Object3D? = cube
-    
-    private let optionsView: Object3DOptionsProtocol = Object3DOptionsView()
     
     private var action: ObjectAction = .rotation
     
@@ -63,6 +77,7 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     private var rotationAnimation: TimerAnimation?
     
     private lazy var mirror: Mirror = Mirror(reflecting: self)
+    private let backgroundTasksQueue: DispatchQueue = .init(label: "backgroundTasksQueue", attributes: .concurrent)
     
     // MARK: - set up
     
@@ -78,6 +93,12 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
         
         view.addSubview(optionsView)
         optionsView.stickToSuperviewSafeEdges([.right, .top], insets: .init(top: 20, left: 0, bottom: 0, right: 20))
+        
+        view.addSubview(exportButton)
+        exportButton.top(20, to: optionsView)
+        exportButton.trailing(20)
+        exportButton.width(to: optionsView)
+        exportButton.height(44)
         
         // gesture recognizers
         
@@ -99,31 +120,61 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
         
         // set up
         
+        exportButton.addTarget(self, action: #selector(saveFile), for: .touchUpInside)
+        
         optionsView.presenter = self
         currentObject?.projection = optionsView.projection
         optionsView.projectionDidChange = { [weak self] newValue in
             guard let self = self else { return }
-            self.currentObject?.projection = newValue
-            self.redraw { context in
-                self.currentObject?.draw(context: context, board: self.board)
-            }
-        }
-        optionsView.edgesStateDidChange = { [weak self] newValue in
-            guard let self = self else { return }
-            self.mirror.children.forEach { child in
-                if let object = child.value as? Object3D {
-                    switch newValue {
-                    case .yes:
-                        object.showInvisibleSides = true
-                        
-                    case .no:
-                        object.showInvisibleSides = false
+            let task = DispatchWorkItem {
+                self.mirror.children.forEach { child in
+                    if let object = child.value as? Object3D {
+                        object.projection = newValue
                     }
                 }
             }
-            self.redraw { context in
-                self.currentObject?.draw(context: context, board: self.board)
+            task.notify(queue: .main) {
+                self.redraw { context in
+                    self.currentObject?.draw(context: context, board: self.board)
+                }
             }
+            self.backgroundTasksQueue.async(execute: task)
+        }
+        optionsView.edgesStateDidChange = { [weak self] newValue in
+            guard let self = self else { return }
+            let task = DispatchWorkItem {
+                self.mirror.children.forEach { child in
+                    if let object = child.value as? Object3D {
+                        switch newValue {
+                        case .yes:
+                            object.showInvisibleSides = true
+                            
+                        case .no:
+                            object.showInvisibleSides = false
+                        }
+                    }
+                }
+            }
+            task.notify(queue: .main) {
+                self.redraw { context in
+                    self.currentObject?.draw(context: context, board: self.board)
+                }
+            }
+            self.backgroundTasksQueue.async(execute: task)
+        }
+        
+        initObjects()
+    }
+    
+    /// Method that initializes objects
+    ///
+    /// Initially all objects are lazy to speed up launch, then they should be initialized to enable reflection
+    private func initObjects() {
+        backgroundTasksQueue.async {
+            let objects: [Object3D] = [
+                self.cube, self.pyramid, self.tetrahedron, self.octahedron, self.icosahedron, self.dodecahedron, self.sphere, self.torus, self.spring, self.spiral, self.fruit
+            ]
+            for _ in objects { }
         }
     }
     
@@ -193,6 +244,14 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
             currentObject = dodecahedron
         case .sphere:
             currentObject = sphere
+        case .torus:
+            currentObject = torus
+        case .spring:
+            currentObject = spring
+        case .spiral:
+            currentObject = spiral
+        case .fruit:
+            currentObject = fruit
         default:
             currentObject = nil
         }
@@ -219,6 +278,10 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
         icosahedron = Icosahedron()
         dodecahedron = Dodecahedron()
         sphere = Sphere()
+        torus = Torus()
+        spring = Spring()
+        spiral = Spiral()
+        fruit = Fruit()
         
         updateCurrentObject()
         currentObject?.projection = optionsView.projection
@@ -237,8 +300,8 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     }
     
     private func rotate(from p1: CGPoint, to p2: CGPoint) {
-        let dx: CGFloat = p1.y - p2.y
-        let dy: CGFloat = p2.x - p1.x
+        let dx: CGFloat = p2.y - p1.y
+        let dy: CGFloat = p1.x - p2.x
         let dz: CGFloat = 0
         let degree = Float.pi / 180
         
@@ -249,15 +312,6 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
                               context: context,
                               board: board)
         }
-        
-//        imageView.image = nil
-//        backgroundImageDrawing { context in
-//            self.currentObject?.rotate(alpha: Float(dx) * degree,
-//                                       theta: Float(dy) * degree,
-//                                       phi: Float(dz),
-//                                       context: context,
-//                                       board: self.board)
-//        }
     }
     
     private func rotate(dz: CGFloat) {
@@ -308,6 +362,36 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
                 self.rotate(from: self.previousPoint, to: point)
                 self.previousPoint = point
             })
+    }
+    
+    // MARK: - Button handler
+    
+    @objc private func saveFile() {
+        let fileManager = FileManager.default
+        var data: Data?
+        
+        let task: DispatchWorkItem = .init {
+            data = self.currentObject?.export()
+        }
+        task.notify(queue: .main, execute: {
+            do {
+                let fileURL = fileManager.temporaryDirectory.appendingPathComponent("file.txt")
+                
+                try data?.write(to: fileURL)
+                
+                if #available(iOS 14, *) {
+                    let controller = UIDocumentPickerViewController(forExporting: [fileURL])
+                    self.present(controller, animated: true)
+                } else {
+                    let controller = UIDocumentPickerViewController(url: fileURL, in: .exportToService)
+                    self.present(controller, animated: true)
+                }
+            } catch {
+                print("Error creating file")
+            }
+        })
+        backgroundTasksQueue.async(execute: task)
+        
     }
     
 }

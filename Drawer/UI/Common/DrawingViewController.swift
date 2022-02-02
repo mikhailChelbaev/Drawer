@@ -92,36 +92,6 @@ class DrawingViewController: UIViewController {
         }
     }
     
-    private let drawingQueue = DispatchQueue(label: "drawing", qos: .userInteractive, attributes: .concurrent)
-    
-    func backgroundImageDrawing(drawing: @escaping (CGContext) -> Void) {
-        let renderer = UIGraphicsImageRenderer(size: view.frame.size)
-        
-//        let currentImage = imageView.image
-        let color = color.cgColor
-        
-        let block: DispatchWorkItem = .init {
-            
-            let image = renderer.image { context in
-                
-                drawing(context.cgContext)
-                
-                context.cgContext.setLineCap(.round)
-                context.cgContext.setBlendMode(.normal)
-                context.cgContext.setLineWidth(1)
-                context.cgContext.setStrokeColor(color)
-                
-                context.cgContext.strokePath()
-            }
-            
-            DispatchQueue.main.async {
-                self.imageView.image = image
-            }
-        }
-        
-        drawingQueue.async(execute: block)
-    }
-    
     func clear() {
         imageView.image = nil
         board = .init(size: imageView.frame.size, color: color)
