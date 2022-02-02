@@ -54,6 +54,7 @@
 		749B2786279CB4C900C4534D /* RobertsAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B2785279CB4C900C4534D /* RobertsAlgorithm.swift */; };
 		749B2789279CB71000C4534D /* Array+Point3DTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B2788279CB71000C4534D /* Array+Point3DTransform.swift */; };
 		74AC8A94274F0DAE0084A48D /* CasteljauBezierCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */; };
+		74BF30DB27AB199600157687 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BF30DA27AB199600157687 /* Ball.swift */; };
 		74C89232275FE4BB0045798E /* Object3DOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */; };
 		74C89234275FE4D90045798E /* Object3DOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C89233275FE4D90045798E /* Object3DOptionsView.swift */; };
 		74CD02B1273B1A67007F0CFA /* UIColor+IsEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */; };
@@ -118,6 +119,7 @@
 		749B2785279CB4C900C4534D /* RobertsAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertsAlgorithm.swift; sourceTree = "<group>"; };
 		749B2788279CB71000C4534D /* Array+Point3DTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Point3DTransform.swift"; sourceTree = "<group>"; };
 		74AC8A93274F0DAE0084A48D /* CasteljauBezierCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasteljauBezierCurve.swift; sourceTree = "<group>"; };
+		74BF30DA27AB199600157687 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		74C89231275FE4BB0045798E /* Object3DOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionItemView.swift; sourceTree = "<group>"; };
 		74C89233275FE4D90045798E /* Object3DOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object3DOptionsView.swift; sourceTree = "<group>"; };
 		74CD02B0273B1A67007F0CFA /* UIColor+IsEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+IsEqual.swift"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				74D402C52798B437002CCFB3 /* Icosahedron.swift */,
 				740003C82799F8D8000668B3 /* Dodecahedron.swift */,
 				74CDC670279B5B2700D9C747 /* Sphere.swift */,
+				74BF30DA27AB199600157687 /* Ball.swift */,
 				747CB59327A9BCA000EDB794 /* Torus.swift */,
 				747CB59527A9BE8E00EDB794 /* Spring.swift */,
 				747CB59727A9DB6900EDB794 /* Spiral.swift */,
@@ -464,6 +467,7 @@
 				747CB59827A9DB6900EDB794 /* Spiral.swift in Sources */,
 				749B2784279CB4B700C4534D /* SideVisibility.swift in Sources */,
 				749650252760ABFC0061F01C /* Object3D.swift in Sources */,
+				74BF30DB27AB199600157687 /* Ball.swift in Sources */,
 				742152AB2714E51600802062 /* Stack.swift in Sources */,
 				749650302760E84A0061F01C /* DecelerationTimingParameters.swift in Sources */,
 				7458D064272710EA0055011C /* PolygonFiller.swift in Sources */,

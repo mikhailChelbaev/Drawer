@@ -26,11 +26,14 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     private lazy var octahedron: Object3D = Octahedron()
     private lazy var icosahedron: Object3D = Icosahedron()
     private lazy var dodecahedron: Object3D = Dodecahedron()
+    
     private lazy var sphere: Object3D = Sphere()
+    private lazy var ball: Object3D = Ball()
+    private lazy var fruit: Object3D = Fruit()
+    
     private lazy var torus: Object3D = Torus()
     private lazy var spring: Object3D = Spring()
     private lazy var spiral: Object3D = Spiral()
-    private lazy var fruit: Object3D = Fruit()
     
     // MARK: - DrawerProvider
     
@@ -172,7 +175,7 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
     private func initObjects() {
         backgroundTasksQueue.async {
             let objects: [Object3D] = [
-                self.cube, self.pyramid, self.tetrahedron, self.octahedron, self.icosahedron, self.dodecahedron, self.sphere, self.torus, self.spring, self.spiral, self.fruit
+                self.cube, self.pyramid, self.tetrahedron, self.octahedron, self.icosahedron, self.dodecahedron, self.sphere, self.torus, self.spring, self.spiral, self.fruit, self.ball
             ]
             for _ in objects { }
         }
@@ -244,6 +247,8 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
             currentObject = dodecahedron
         case .sphere:
             currentObject = sphere
+        case .ball:
+            currentObject = ball
         case .torus:
             currentObject = torus
         case .spring:
@@ -278,6 +283,7 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
         icosahedron = Icosahedron()
         dodecahedron = Dodecahedron()
         sphere = Sphere()
+        ball = Ball()
         torus = Torus()
         spring = Spring()
         spiral = Spiral()

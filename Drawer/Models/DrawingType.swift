@@ -32,6 +32,7 @@ enum DrawingType {
     case icosahedron
     case dodecahedron
     case sphere
+    case ball
     case torus
     case spring
     case spiral
@@ -77,6 +78,8 @@ enum DrawingType {
             return "Dodecahedron"
         case .sphere:
             return "Sphere"
+        case .ball:
+            return "Ball"
         case .torus:
             return "Torus"
         case .spring:
@@ -136,6 +139,8 @@ enum DrawingType {
             return UIImage(systemName: "line.3.crossed.swirl.circle")
         case .fruit:
             return UIImage(systemName: "oval")
+        case .ball:
+            return UIImage(systemName: "restart.circle")
         }
     }
 }
