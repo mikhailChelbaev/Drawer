@@ -70,8 +70,8 @@ final class CurvesDrawingViewController: DrawingViewController, DrawerProvider {
         didSet { update() }
     }
     
-    override func commonInit() {
-        super.commonInit()
+    override func configure() {
+        super.configure()
         
         optionsView.handler = self
         optionsView.setState(.disabled, for: .closeCurve)

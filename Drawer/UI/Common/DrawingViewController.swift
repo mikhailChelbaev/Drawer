@@ -50,14 +50,14 @@ class DrawingViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        commonInit()
+        configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func commonInit() {
+    func configure() {
         view.backgroundColor = .systemBackground
         
         view.addSubview(imageView)

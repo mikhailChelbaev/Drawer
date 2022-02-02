@@ -36,13 +36,13 @@ class Object3D {
         closePerspectiveProjectionMatrix = .init(rows: [
             Point3D(x: 1, y: 0, z: 0, w: 0),
             Point3D(x: 0, y: 1, z: 0, w: 0),
-            Point3D(x: 0, y: 0, z: 0, w: -1 / 200),
+            Point3D(x: 0, y: 0, z: 1, w: -1 / 200),
             Point3D(x: 0, y: 0, z: 0, w: 1)
         ])
         distantPerspectiveProjectionMatrix = .init(rows: [
             Point3D(x: 1, y: 0, z: 0, w: 0),
             Point3D(x: 0, y: 1, z: 0, w: 0),
-            Point3D(x: 0, y: 0, z: 0, w: -1 / 600),
+            Point3D(x: 0, y: 0, z: 1, w: -1 / 600),
             Point3D(x: 0, y: 0, z: 0, w: 1)
         ])
     }

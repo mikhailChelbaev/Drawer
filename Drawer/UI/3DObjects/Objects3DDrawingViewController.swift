@@ -86,8 +86,8 @@ final class Objects3DDrawingViewController: DrawingViewController, DrawerProvide
         drawShape()
     }
     
-    override func commonInit() {
-        super.commonInit()
+    override func configure() {
+        super.configure()
         
         // ui
         

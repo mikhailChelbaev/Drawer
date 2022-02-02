@@ -86,7 +86,7 @@ final class ClippingViewController: DrawingViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeController))
     }
     
-    override func commonInit() {
+    override func configure() {
         setUpNavBar()
         view.backgroundColor = .white
         
